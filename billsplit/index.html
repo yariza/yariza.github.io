@@ -222,11 +222,11 @@
 			}
 
 			$('#results').append("<p>"+exchanges.join("<br>")+"</p>");
-			$('#results').append("<p>The total check is $" + (total/100).toFixed() + "</p>");
+			$('#results').append("<p>The total check is $" + (total/100).toFixed(2) + "</p>");
 
 			var statuses = [];
 			for (var i=0; i<payers.length; i++) {
-				statuses.push(payers[i] + " is over by $" + (moneyleft[i]/100).toFixed());
+				statuses.push(payers[i] + " is over by $" + (moneyleft[i]/100).toFixed(2));
 			}
 			$('#results').append("<p>"+statuses.join("<br>")+"</p>");
 		}
