@@ -177,9 +177,8 @@
 			for (var i=0; i<moneyleft.length; i++) {
 				sumleft += moneyleft[i];
 			}
-			console.log(sumleft);
 
-			while (cash.length > 0 && cash[cash.length-1].cents <= maxleft) {
+			while (cash.length > 0 && cash[cash.length-1].cents <= sumleft) {
 
 				var name = payers[maxindex];
 				cash.sort(function(a,b) {
@@ -194,7 +193,7 @@
 				});
 
 				var i=0;
-				while (i < cash.length-1 && cash[i].cents > maxleft)
+				while (i < cash.length-1 && cash[i].cents > sumleft)
 					i++;
 
 				var bill = cash.splice(i, 1)[0];
@@ -206,13 +205,11 @@
 
 				var maxleft = Math.max.apply(Math, moneyleft);
 				var maxindex = moneyleft.indexOf(maxleft);
-				console.log("maxindex = " + maxindex);
 
 				sumleft = 0;
 				for (var i=0; i<moneyleft.length; i++) {
 					sumleft += moneyleft[i];
 				}
-				console.log(sumleft);
 			}
 		}
 
