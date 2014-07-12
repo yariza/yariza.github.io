@@ -10,15 +10,20 @@
         <link rel="stylesheet" href="/css/syntax.css">
 
         <!-- Custom CSS -->
-        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/common.css">
+        {% for css_name in page.extra-css %}
+          <link rel="stylesheet" type="text/css" href="{{ css_name }}">
+        {% endfor %}
 
     </head>
     <body>
 
         <div class="site">
           <div class="header">
-            <h1 class="title"><a href="/">{{ site.name }}</a></h1>
-            <a class="extra" href="/">home</a>
+            <h1 class="title"><a href="/">Yujin Ariza</a></h1>
+            <a class="extra" href="/">violin</a>
+            <a class="extra" href="/">development</a>
+            <a class="extra" href="/">blog</a>
           </div>
 
           {{ content }}
@@ -28,13 +33,13 @@
               <p>
                 Yujin Ariza<br />
                 Violinist, Programmer<br />
-                yariza.github.io
               </p>
             </div>
             <div class="contact">
               <p>
-                <a href="https://github.com/yariza">github.com/yariza</a><br />
-                [firstname].[lastname]@gmail.com<br />
+                <a href="https://github.com/yariza">GitHub</a><br>
+                <a href="www.linkedin.com/in/yujinariza">LinkedIn</a><br>
+                <a href="mailto:me@yujinariza.com">me@yujinariza.com</a><br>
               </p>
             </div>
           </div>
