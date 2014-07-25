@@ -6,7 +6,126 @@
 	box-sizing: border-box;
 }
 
-html {
-	height: 100%;
+html, body { height: 100%; }
+
+h1, h2, h3, h4, h5, h6 {
+	font-size: 100%; 
 }
 
+body {
+	background-color: #FFF;
+	font: 1.0em 'Source Sans Pro', sans-serif;
+	/*font: 13.34px Helvetica, Arial, sans-serif;*/
+	text-align: center;
+}
+
+h1 {
+	margin-bottom: 1em;
+}
+
+p {
+	margin: 1em 0;
+}
+
+a {
+	color: #00a;
+}
+
+a:hover {
+	color: #000;
+}
+
+a:visited {
+	color: #a0a;
+}
+
+article {
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	max-width: 100%;
+	padding-bottom: 100px;
+}
+
+header {
+	background-color: #91C46C;
+	margin-bottom: 10px;
+	padding: 20px;
+}
+
+	/*****************************************************************************/
+/*
+/* Site
+/*
+/*****************************************************************************/
+
+.site {
+	text-align: left;
+	width: 800px;
+	margin: 3em auto 2em;
+	line-height: 1.5em;
+}
+
+.site .header {
+
+}
+
+.site .header a {
+	font-size: 1.1em;
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.site .header h1.title {
+	font-size: 1.3em;
+	display: inline-block;
+	margin-bottom: 2em;
+}
+
+.site .header h1.title a {
+	color: #a00;
+}
+
+.site .header h1.title a:hover {
+	color: #000;
+}
+
+.site .header a.extra {
+	color: #aaa;
+	margin-left: 1em;
+}
+
+.site .header a.extra:hover {
+	color: #000;
+}
+
+.site .meta {
+	color: #aaa;
+}
+
+.site .footer {
+	font-size: 0.9em;
+	color: #666;
+	border-top: 4px solid #eee;
+	margin-top: 2em;
+	overflow: hidden;
+}
+
+.site .footer .contact {
+	float: left;
+	margin-right: 3em;
+}
+
+.site .footer .contact a {
+	color: #8085C1;
+}
+
+.site .footer .rss {
+	margin-top: 1.1em;
+	margin-right: -.2em;
+	float: right;
+}
+
+.site .footer .rss img {
+	border: 0;
+}

@@ -1,39 +1,32 @@
-/*****************************************************************************/
-/*
-/* Common
-/*
-/*****************************************************************************/
-
-/* Global Reset */
-* {
-  margin: 0;
-  padding: 0;
+#blurb {
+  margin-top: 40px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
-html, body { height: 100%; }
-
-body {
-  background-color: #FFF;
-  font: 13.34px Helvetica, Arial, sans-serif;
-  font-size: small;
-  text-align: center;
+#blurb img {
+  display: block;
+  float: left;
+  height: 250px;
+  width: auto;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-size: 100%; }
-
-h1 { margin-bottom: 1em; }
-p { margin: 1em 0; }
-
-a         { color: #00a; }
-a:hover   { color: #000; }
-a:visited { color: #a0a; }
+#about {
+  float: left;
+  padding-left: 30px;
+  padding-right: 30px;
+  width: 500px;
+}
 
 /*****************************************************************************/
 /*
-/* Home
+/* Posts
 /*
 /*****************************************************************************/
+
 ul.posts {
   list-style-type: none;
   margin-bottom: 2em;
@@ -45,87 +38,9 @@ ul.posts li {
 
 ul.posts span {
   color: #aaa;
-  font-family: Monaco, "Courier New", monospace;
+  /*font-family: Monaco, "Courier New", monospace;*/
   font-size: 80%;
 }
-
-/*****************************************************************************/
-/*
-/* Site
-/*
-/*****************************************************************************/
-
-.site {
-  font-size: 115%;
-  text-align: justify;
-  width: 42em;
-  margin: 3em auto 2em;
-  line-height: 1.5em;
-}
-
-.site .header a {
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.site .header h1.title {
-  display: inline-block;
-  margin-bottom: 2em;
-}
-
-.site .header h1.title a {
-  color: #a00;
-}
-
-.site .header h1.title a:hover {
-  color: #000;
-}
-
-.site .header a.extra {
-  color: #aaa;
-  margin-left: 1em;
-}
-
-.site .header a.extra:hover {
-  color: #000;
-}
-
-.site .meta {
-  color: #aaa;
-}
-
-.site .footer {
-  font-size: 80%;
-  color: #666;
-  border-top: 4px solid #eee;
-  margin-top: 2em;
-  overflow: hidden;
-}
-
-.site .footer .contact {
-  float: left;
-  margin-right: 3em;
-}
-
-.site .footer .contact a {
-  color: #8085C1;
-}
-
-.site .footer .rss {
-  margin-top: 1.1em;
-  margin-right: -.2em;
-  float: right;
-}
-
-.site .footer .rss img {
-  border: 0;
-}
-
-/*****************************************************************************/
-/*
-/* Posts
-/*
-/*****************************************************************************/
 
 /* standard */
 .post pre {
