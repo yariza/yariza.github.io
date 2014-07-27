@@ -1,0 +1,17 @@
+---
+layout: summary
+title: Blog — Yujin Ariza
+extra-css: [/css/blog.css]
+---
+
+{% if site.posts == empty %}
+<p>
+I haven't gotten around to posting stuff here yet. But don't worry, I'll post
+soon!
+</p>
+{% endif %}
+<ul class="posts">
+	{% for post in site.posts %}
+	<li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+	{% endfor %}
+</ul>

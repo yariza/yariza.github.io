@@ -6,16 +6,19 @@
 	<title>{{ page.title }}</title>
 	<meta name="viewport" content="width=device-width">
 
+	<!-- google font -->
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,400italic,600italic|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
 	<!-- syntax highlighting CSS -->
 	<link rel="stylesheet" href="/css/syntax.css">
-	<!-- google font -->
-	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,400italic,600italic' rel='stylesheet' type='text/css'>
-
 	<!-- Custom CSS -->
 	<link rel="stylesheet" href="/css/common.css">
 	{% for css_name in page.extra-css %}
 	<link rel="stylesheet" type="text/css" href="{{ css_name }}">
 	{% endfor %}
+	{% if page.post_css %}
+	<link rel="stylesheet" type="text/css" href="{{ page.post_css }}">
+	{% endif %}
 
 </head>
 <body>
@@ -23,12 +26,14 @@
 	<div class="site">
 		<div class="header">
 			<h1 class="title"><a href="/">Yujin Ariza</a></h1>
-			<a class="extra" href="/">violin</a>
-			<a class="extra" href="/">development</a>
-			<a class="extra" href="/">blog</a>
+			<a class="extra" href="/violin">violin</a>
+			<a class="extra" href="/dev">development</a>
+			<a class="extra" href="/blog">blog</a>
 		</div>
 
+		<div class="content">
 		{{ content }}
+		</div>
 
 		<div class="footer">
 			<div class="contact">

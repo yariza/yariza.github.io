@@ -1,0 +1,9 @@
+.post img {
+	display: block;
+	float: left;
+	height: auto;
+	width: 370px;
+	padding: 15px;
+	margin-right: 15px;
+	margin-bottom: 15px;
+}
