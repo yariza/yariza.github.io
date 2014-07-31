@@ -4,6 +4,8 @@ title: Development — Yujin Ariza
 extra-css: [/css/dev.css]
 ---
 
+![](/img/avatar-computer.png)
+
 I am a third-year undergraduate student at Columbia University studying Computer
 Science, with an interest in mobile applications and graphics. You can see my
 previous work by clicking on the links below:
