@@ -21,18 +21,19 @@ A puzzle game for the iPhone, made in June 2012.
 Work Experience
 ---
 
-- [Whisper](http://whisper.sh) — iOS Development Intern (June 2014 - ongoing)
-	- Developed an SDK for third-party developers to interface with the
-	Whisper iPhone app.
+- [Whisper](http://whisper.sh) — iOS Development Intern (June 2014 - August 2014)
+	- Developed an [SDK](https://github.com/WhisperApp/Whisper-iOS-SDK) to allow
+	third-party developers to interface with the Whisper iPhone app.
 	- Developed an analytics manager for the iPhone, including work on both the
 	iOS	client and the backend server in Erlang.
+	- Built a public confessional booth in Venice beach, which involved
+	construction, design and development of an iPad app, and integration with
+	Arduino and a bluetooth module.
 - [MakeGamesWithUs](http://mgw.us) — Software Development Intern (April 2012 -
-ongoing)
-	- Learned iOS programming using hands-on tutorials and programming lessons,
-	as well as developing a deeper understanding on how video game designers,
-	artists, and musicians collaborate to develop a product.
-	- Worked with partner to develop our own game, Elemental Fury, which was
-	released in June 2012, and reached Top 25 Puzzle Games on the App Store in
-	5 different countries.
+June 2012)
+	- Learned iOS programming through tutorials and programming lessons, and
+	worked with artists and musicians to design and develop a game.
+	- Worked with partner to release Elemental Fury in June 2012, which reached
+	Top 25 Puzzle Games on the App Store in 5 different countries.
 
 [Download Resume in PDF format](/downloads/yujin_resume_technical.pdf)
