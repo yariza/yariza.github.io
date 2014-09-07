@@ -13,7 +13,7 @@ previous work by clicking on the links below:
 Projects
 ---
 
-- [BillSplit](/billsplit) — A simple website to help you and your friends split
+- [BillSplit](/billsplit-old) — A simple website to help you and your friends split
 cash evenly at a group dining situation.
 - [Elemental Fury](https://itunes.apple.com/us/app/elemental-fury/id532040551?mt=8) —
 A puzzle game for the iPhone, made in June 2012.
