@@ -26,13 +26,13 @@ $(document).ready(function () {
 		}
 		subhead.finish();
 		subhead.text(text);
-		subhead.fadeIn(300);
+		subhead.fadeIn(200);
 	});
 
 	$('.hover').mouseleave(function (){
 		var subhead = $('.subhead');
 		subhead.finish();
-		subhead.fadeOut(300);
+		subhead.fadeOut(200);
 	});
 })
 
