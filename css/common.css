@@ -1,6 +1,7 @@
 * {
 	margin: 0px;
 	padding: 0px;
+	position: relative;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
@@ -51,23 +52,35 @@ article {
 }
 
 .site .header a {
+	font-weight: 300;
 	font-size: 1.1em;
-	font-weight: 600;
 	text-decoration: none;
 }
 
-.site .header h1.title {
-	font-size: 1.3em;
+.site .header .title {
+	font-weight: 300;
+	font-size: 2.3em;
 	display: inline-block;
 	margin-bottom: 80px;
 }
 
-.site .header h1.title a {
-	color: #a00;
+.site .header .title a {
+	color: #555;
 }
 
-.site .header h1.title a:hover {
+.site .header .title a:hover {
 	color: #000;
+}
+
+.site .header .title .subhead {
+	font-weight: 400;
+	font-size: 0.45em;
+	position: absolute;
+	right: 0px;
+	color: #888;
+	font-style: italic;
+	text-align: right;
+	display: none;
 }
 
 .site .header a.extra {
