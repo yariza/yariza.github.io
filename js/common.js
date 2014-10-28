@@ -1,13 +1,13 @@
 var randomtext = [
-	'some guy',
 	'game dev',
 	'Columbia student',
 	'Juilliard student',
 	'Geomag fan',
 	'cartoonist',
-	'tomato lover',
 	'music critic',
-	'reddit lurker',
+	'musician',
+	'TI-84 programmer',
+	'designer wannabe',
 	'dreamer'
 ]
 
