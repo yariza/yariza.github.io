@@ -2,6 +2,7 @@
 layout: summary
 title: Development — Yujin Ariza
 extra-css: [/css/dev.css]
+extra-js: [/js/dev.js]
 ---
 
 ![](/img/avatar-computer.png)

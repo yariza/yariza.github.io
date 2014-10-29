@@ -2,6 +2,7 @@
 layout: summary
 title: Violin — Yujin Ariza
 extra-css: [/css/violin.css]
+extra-js: [/js/violin.js]
 ---
 
 ![](/img/yujin-profile.jpg)

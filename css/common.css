@@ -1,7 +1,6 @@
 * {
 	margin: 0px;
 	padding: 0px;
-	position: relative;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
@@ -51,6 +50,11 @@ article {
 	line-height: 1.5em;
 }
 
+.site .header {
+	margin-bottom: 80px;
+	display: inline-block;
+}
+
 .site .header a {
 	font-weight: 300;
 	font-size: 1.2em;
@@ -61,7 +65,6 @@ article {
 	font-weight: 300;
 	font-size: 2.3em;
 	display: inline-block;
-	margin-bottom: 80px;
 }
 
 .site .header .title a {
@@ -70,6 +73,10 @@ article {
 
 .site .header .title a:hover {
 	color: #000;
+}
+
+.site .header .title {
+	position: relative;
 }
 
 .site .header .title .subhead {
