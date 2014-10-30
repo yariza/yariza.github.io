@@ -47,15 +47,10 @@ $(document).ready(function () {
 		}
 		subhead.finish();
 
-		if (text) {
-			if (text != subhead.text()) {
-				subhead.hide();
-				subhead.text(text);
-				subhead.fadeIn(200);
-			}
-		}
-		else {
-			subhead.fadeOut(200);
+		if (subhead.is(':hidden') || text != subhead.text()) {
+			subhead.hide();
+			subhead.text(text);
+			subhead.fadeIn(200);
 		}
 	});
 
@@ -79,7 +74,7 @@ $(document).ready(function () {
 		else if (current_nav == 'nav-blog')
 			text = 'blogger';
 
-		if (text && text != subhead.text()) {
+		if (subhead.is(':hidden') || text != subhead.text()) {
 			subhead.finish();
 			subhead.text(text);
 			subhead.hide();
