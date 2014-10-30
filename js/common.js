@@ -48,9 +48,11 @@ $(document).ready(function () {
 		subhead.finish();
 
 		if (text) {
-			subhead.hide();
-			subhead.text(text);
-			subhead.fadeIn(200);
+			if (text != subhead.text()) {
+				subhead.hide();
+				subhead.text(text);
+				subhead.fadeIn(200);
+			}
 		}
 		else {
 			subhead.fadeOut(200);
@@ -77,11 +79,11 @@ $(document).ready(function () {
 		else if (current_nav == 'nav-blog')
 			text = 'blogger';
 
-		if (text) {
-				subhead.finish();
-				subhead.text(text);
-				subhead.hide();
-				subhead.fadeIn(200);
+		if (text && text != subhead.text()) {
+			subhead.finish();
+			subhead.text(text);
+			subhead.hide();
+			subhead.fadeIn(200);
 		}
 	});
 
