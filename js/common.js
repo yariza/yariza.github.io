@@ -48,20 +48,22 @@ $(document).ready(function () {
 		subhead.finish();
 
 		if (text) {
-			if (subhead.text() != text) {
-				subhead.hide();
-				subhead.text(text);
-				subhead.fadeIn(200);
-			}
+			subhead.hide();
+			subhead.text(text);
+			subhead.fadeIn(200);
 		}
 		else {
 			subhead.fadeOut(200);
 		}
+	});
 
-		// if (current_nav != id) {
-		// 	if (current_nav != 'nav-home')
-		// 		$('#'+current_nav).css('color', '#999');
-		// }
+	$('.hover').mouseleave(function (e) {
+		var subhead = $('.subhead');
+		var id = $(e.target).attr('id');
+		if (id != current_nav || current_nav == 'nav-home') {
+			subhead.finish();
+			subhead.fadeOut(200);
+		}
 	});
 
 	$('.header').mouseleave(function (){
@@ -75,22 +77,13 @@ $(document).ready(function () {
 		else if (current_nav == 'nav-blog')
 			text = 'blogger';
 
-		subhead.finish();
 		if (text) {
-			if (subhead.text() != text) {
+				subhead.finish();
 				subhead.text(text);
 				subhead.hide();
 				subhead.fadeIn(200);
-			}
 		}
-		else {
-			subhead.fadeOut(200);
-		}
-
-		// if (current_nav == 'nav-home')
-		// 	$('#'+current_nav).css('color', '#000');
-		// else
-		// 	$('#'+current_nav).css('color', '#555');
 	});
+
 })
 
