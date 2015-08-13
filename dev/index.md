@@ -14,6 +14,8 @@ previous work by clicking on the links below:
 Projects
 ---
 
+- [Rainborg](https://github.com/yariza/Rainborg) – A GPU-accelerated particle-based fluid simulation. Written in CUDA C/C++.
+- [Vango](https://github.com/yariza/vango) – Painterly representation of images. Written in C++, using OpenCV.
 - [BillSplit](/billsplit-old) — A simple website to help you and your friends split
 cash evenly at a group dining situation.
 - [Elemental Fury](https://itunes.apple.com/us/app/elemental-fury/id532040551?mt=8) —
@@ -22,6 +24,8 @@ A puzzle game for the iPhone, made in June 2012.
 Work Experience
 ---
 
+- [Snapchat](https://www.snapchat.com/) – Software Engineering Intern (June 2015 - August 2015)
+	+ iOS client and Java server work related to the scanning of snapcodes, and other features.
 - [Whisper](http://whisper.sh) — iOS Development Intern (June 2014 - August 2014)
 	- Developed an [SDK](https://github.com/WhisperApp/Whisper-iOS-SDK) to allow
 	third-party developers to interface with the Whisper iPhone app.
