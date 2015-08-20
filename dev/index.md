@@ -7,9 +7,7 @@ extra-js: [/js/dev.js]
 
 ![](/img/avatar-computer.png)
 
-I am a third-year undergraduate student at Columbia University studying Computer
-Science, with an interest in mobile applications and graphics. You can see my
-previous work by clicking on the links below:
+I am a recent graduate from Columbia University studying Computer Science, with an interest in mobile applications and graphics. You can see my previous work by clicking on the links below:
 
 Projects
 ---
@@ -31,14 +29,10 @@ Work Experience
 	third-party developers to interface with the Whisper iPhone app.
 	- Developed an analytics manager for the iPhone, including work on both the
 	iOS	client and the backend server in Erlang.
-	- Built a public confessional booth in Venice beach, which involved
-	construction, design and development of an iPad app, and integration with
-	Arduino and a bluetooth module.
+	- Built a public confessional booth in Venice beach, which involved 	construction, design and development of an iPad app, and integration with 	Arduino and a bluetooth module.
 - [MakeGamesWithUs](http://mgw.us) — Software Development Intern (April 2012 -
 June 2012)
-	- Learned iOS programming through tutorials and programming lessons, and
-	worked with artists and musicians to design and develop a game.
-	- Worked with partner to release Elemental Fury in June 2012, which reached
-	Top 25 Puzzle Games on the App Store in 5 different countries.
+	- Learned iOS programming through tutorials and programming lessons, and 	worked with artists and musicians to design and develop a game.
+	- Worked with partner to release Elemental Fury in June 2012, which reached Top 25 Puzzle Games on the App Store in 5 different countries.
 
 [Download Resume in PDF format](/downloads/yujin_resume_technical.pdf)
