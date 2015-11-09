@@ -9,8 +9,7 @@ extra-js: [/js/dev.js]
 
 I am a recent graduate from Columbia University studying Computer Science, with an interest in mobile applications and graphics. You can see my previous work by clicking on the links below:
 
-Projects
----
+# Projects
 
 - [Rainborg](https://github.com/yariza/Rainborg) – A GPU-accelerated particle-based fluid simulation. Written in CUDA C/C++.
 - [Vango](https://github.com/yariza/vango) – Painterly representation of images. Written in C++, using OpenCV.
@@ -19,8 +18,7 @@ cash evenly at a group dining situation.
 - [Elemental Fury](https://itunes.apple.com/us/app/elemental-fury/id532040551?mt=8) —
 A puzzle game for the iPhone, made in June 2012.
 
-Work Experience
----
+# Work Experience
 
 - [Snapchat](https://www.snapchat.com/) – Software Engineering Intern (June 2015 - August 2015)
 	+ iOS client and Java server work related to the scanning of snapcodes, and other features.
