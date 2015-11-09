@@ -13,7 +13,7 @@ ul.posts span {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #a00;
+  color: #2D2D2D;
 }
 
 /* standard */
@@ -29,6 +29,17 @@ h1, h2, h3, h4, h5, h6 {
 
 article>ul, p>ul {
   margin-bottom: 2.0em;
+}
+
+/* blockquote */
+blockquote {
+  border-left: 10px solid #ccc;
+  margin: 1.5em 0px;
+  padding: 0.5em 20px;
+}
+
+blockquote p {
+  display: inline;
 }
 
 .post code {
