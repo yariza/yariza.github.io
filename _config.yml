@@ -1,4 +1,4 @@
 name: yariza
-markdown: redcarpet
+markdown: kramdown
 highlighter: pygments
 permalink: /blog/:year/:month/:day/:title
