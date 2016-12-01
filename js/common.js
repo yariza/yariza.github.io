@@ -39,7 +39,7 @@ $(document).ready(function () {
 			text = 'developer';
 		else if (id == 'nav-blog')
 			text = 'blogger';
-		else {
+		else if (id == 'nav-home') {
 			if (current_nav == 'nav-home')
 				text = randomtext[Math.floor(Math.random()*randomtext.length)];
 			else
