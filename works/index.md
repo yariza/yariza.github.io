@@ -22,6 +22,17 @@ the opportunity to take study violin at Juilliard, while taking classes at Colum
 
 # Projects
 
+## _Cracked Orlando_
+
+03/2017
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Z8oDZE83tGQ" frameborder="0" allowfullscreen></iframe>
+
+I contributed interactive art for the Juilliard production of _Cracked Orlando_, a multimedia performance piece by composer Jonathan Dawe. I was responsible for two elements in the show: a rotating and evolving "orb" which was projected as a hologram and controlled by an array of proximity sensors; and a virtual avatar of the character Alcina, motion-tracked by Kinect and augmented with particle effects.
+
+[Alcina Video Sample](/downloads/alcina_demo.mp4)  
+[Orb Video Sample](/downloads/orb_demo.mp4)
+
 ## _Kaze (The Wind)_
 
 06/2016
@@ -33,6 +44,14 @@ Mari Kimura, Liubo Borissov, Yujin Ariza
 I collaborated with violinist and composer Mari Kimura for her work, for violin, voice, string quartet, and interactive computer. I wrote code for the visual component of the piece, a representation of "wind" that flowed and morphed with the piece, using motion data tracked from specially made gloves worn by the performers. Max/MSP and Jitter were used for the live rendering of the particles.
 
 [NewsBlaze: Mari Kimura’s “Kaze (The Wind)/Harmonic Constellations” Kicks up a Storm](http://newsblaze.com/entertainment/music/mari-kimuras-kaze-the-windharmonic-constellations-kicks-up-a-storm_60304/)
+
+## _Fluid_
+
+12/2015
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/BmHt5eSwW_A" frameborder="0" allowfullscreen></iframe>
+
+Fluid is an audiovisual piece that I created. The piece was made using Ableton Live + Max, so that the visuals (built in Max's Jitter) can react to the MIDI and control parameters being sent through Ableton. Read more about the project and its technical challenges in a blog post I wrote [here](/blog/2015/12/23/postmortem-fluid/).
 
 ## _Vango_ – Painterly Representations of Images
 
