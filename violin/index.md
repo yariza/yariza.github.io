@@ -7,7 +7,7 @@ extra-js: [/js/violin.js]
 
 ![](/img/yujin-profile.jpg)
 
-Yujin Ariza, age 21, a graduate student at and the Juilliard School, and the
+Yujin Ariza, a graduate student at and the Juilliard School, and the
 former Concertmaster of the San Francisco Symphony Youth Orchestra, made his
 Carnegie Hall debut in May 2008. A winner of the National Young Arts Foundation
 2013, Yujin made his concerto debut with the El Camino Youth Symphony as a

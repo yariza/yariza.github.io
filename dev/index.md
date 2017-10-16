@@ -20,6 +20,9 @@ A puzzle game for the iPhone, made in June 2012.
 
 # Work Experience
 
+- [Unity Technologies](https://unity3d.com) – Software Engineering Intern (June 2016 - August 2016, June 2017 - August 2017)
+    + Developed a low-level Memory Profiler for analyzing memory
+usage and fragmentation in the Unity engine, in C++ and C#.
 - [Snapchat](https://www.snapchat.com/) – Software Engineering Intern (June 2015 - August 2015)
 	+ iOS client and Java server work related to the scanning of snapcodes, and other features.
 - [Whisper](http://whisper.sh) — iOS Development Intern (June 2014 - August 2014)
