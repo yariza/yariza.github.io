@@ -5,11 +5,14 @@ extra-css: [/css/works.css]
 extra-js: [/js/works.js]
 ---
 
+[Download Resume in PDF format](/downloads/yujin_resume_technical.pdf)
+
 I am a computer science and music student interested in the intersection of Computer Graphics, Human Computer Interaction, and music performance. I am passionate about creative extensions of technology used in art form.
 
-[Download CV in PDF format](/downloads/cv_technical.pdf)
-
 # Education
+
+**Carnegie Mellon University, Entertainment Technology Center**  
+_Master of Entertainment Technology_
 
 **Columbia University**  
 _Bachelor of Arts, Computer Science_  

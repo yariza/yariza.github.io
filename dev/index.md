@@ -7,6 +7,8 @@ extra-js: [/js/dev.js]
 
 ![](/img/avatar-computer.png)
 
+[Download Resume in PDF format](/downloads/yujin_resume_technical.pdf)
+
 I am a recent graduate from Columbia University studying Computer Science, with an interest in mobile applications and graphics. You can see my previous work by clicking on the links below:
 
 # Projects
@@ -35,5 +37,3 @@ usage and fragmentation in the Unity engine, in C++ and C#.
 June 2012)
 	- Learned iOS programming through tutorials and programming lessons, and 	worked with artists and musicians to design and develop a game.
 	- Worked with partner to release Elemental Fury in June 2012, which reached Top 25 Puzzle Games on the App Store in 5 different countries.
-
-[Download Resume in PDF format](/downloads/yujin_resume_technical.pdf)
