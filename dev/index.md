@@ -5,35 +5,67 @@ extra-css: [/css/dev.css]
 extra-js: [/js/dev.js]
 ---
 
-![](/img/avatar-computer.png)
-
 [Download Resume in PDF format](/downloads/yujin_resume_technical.pdf)
 
-I am a recent graduate from Columbia University studying Computer Science, with an interest in mobile applications and graphics. You can see my previous work by clicking on the links below:
+I am a computer science and music student interested in the intersection of Computer Graphics, Human Computer Interaction, and music performance. I am passionate about creative extensions of technology used in art form.
 
-# Projects
+## _Cracked Orlando_
 
-- [Rainborg](https://github.com/yariza/Rainborg) – A GPU-accelerated particle-based fluid simulation. Written in CUDA C/C++.
-- [Vango](https://github.com/yariza/vango) – Painterly representation of images. Written in C++, using OpenCV.
-- [BillSplit](/billsplit-old) — A simple website to help you and your friends split
-cash evenly at a group dining situation.
-- [Elemental Fury](https://itunes.apple.com/us/app/elemental-fury/id532040551?mt=8) —
-A puzzle game for the iPhone, made in June 2012.
+03/2017
 
-# Work Experience
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Z8oDZE83tGQ" frameborder="0" allowfullscreen></iframe>
 
-- [Unity Technologies](https://unity3d.com) – Software Engineering Intern (June 2016 - August 2016, June 2017 - August 2017)
-    + Developed a low-level Memory Profiler for analyzing memory
-usage and fragmentation in the Unity engine, in C++ and C#.
-- [Snapchat](https://www.snapchat.com/) – Software Engineering Intern (June 2015 - August 2015)
-	+ iOS client and Java server work related to the scanning of snapcodes, and other features.
-- [Whisper](http://whisper.sh) — iOS Development Intern (June 2014 - August 2014)
-	- Developed an [SDK](https://github.com/WhisperApp/Whisper-iOS-SDK) to allow
-	third-party developers to interface with the Whisper iPhone app.
-	- Developed an analytics manager for the iPhone, including work on both the
-	iOS	client and the backend server in Erlang.
-	- Built a public confessional booth in Venice beach, which involved 	construction, design and development of an iPad app, and integration with 	Arduino and a bluetooth module.
-- [MakeGamesWithUs](http://mgw.us) — Software Development Intern (April 2012 -
-June 2012)
-	- Learned iOS programming through tutorials and programming lessons, and 	worked with artists and musicians to design and develop a game.
-	- Worked with partner to release Elemental Fury in June 2012, which reached Top 25 Puzzle Games on the App Store in 5 different countries.
+I contributed interactive art for the Juilliard production of _Cracked Orlando_, a multimedia performance piece by composer Jonathan Dawe. I was responsible for two elements in the show: a rotating and evolving "orb" which was projected as a hologram and controlled by an array of proximity sensors; and a virtual avatar of the character Alcina, motion-tracked by Kinect and augmented with particle effects.
+
+[Alcina Video Sample](/downloads/alcina_demo.mp4)  
+[Orb Video Sample](/downloads/orb_demo.mp4)
+
+## _Kaze (The Wind)_
+
+06/2016
+
+Mari Kimura, Liubo Borissov, Yujin Ariza
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/B2LXcqC7U9U" frameborder="0" allowfullscreen></iframe>
+
+I collaborated with violinist and composer Mari Kimura for her work, for violin, voice, string quartet, and interactive computer. I wrote code for the visual component of the piece, a representation of "wind" that flowed and morphed with the piece, using motion data tracked from specially made gloves worn by the performers. Max/MSP and Jitter were used for the live rendering of the particles.
+
+[NewsBlaze: Mari Kimura’s “Kaze (The Wind)/Harmonic Constellations” Kicks up a Storm](http://newsblaze.com/entertainment/music/mari-kimuras-kaze-the-windharmonic-constellations-kicks-up-a-storm_60304/)
+
+## _Fluid_
+
+12/2015
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/BmHt5eSwW_A" frameborder="0" allowfullscreen></iframe>
+
+Fluid is an audiovisual piece that I created. The piece was made using Ableton Live + Max, so that the visuals (built in Max's Jitter) can react to the MIDI and control parameters being sent through Ableton. Read more about the project and its technical challenges in a blog post I wrote [here](/blog/2015/12/23/postmortem-fluid/).
+
+## _Vango_ – Painterly Representations of Images
+
+10/2015
+
+Yujin Ariza, Eszter Offertaler
+
+![](http://github.com/yariza/vango/raw/master/results/columbia2_textured.png)
+
+We convert photographs of scenery into painting representations. After analysis of the image, a "canvas" file is outputted by the program, given a specific "style" file for _vango_ to paint in. After this, the painting can be rendered in either a textured or untextured format.
+
+This project was written in C++, and uses the OpenCV framework.
+
+[Github repo](http://github.com/yariza/vango)  
+[Video sample](/downloads/columbia2_textured.mp4)
+
+## _Rainborg_ – Position-based Fluid Simulation
+
+![](https://raw.githubusercontent.com/yariza/Rainborg/master/results/grid-dambreak.png)
+
+05/2015
+
+Yujin Ariza, Eszter Offertaler
+
+We implemented a GPU-accelerated position-based fluid simulation, based on the paper by [Miles Macklin, and Matthaias Muller](http://mmacklin.com/pbf_sig_preprint.pdf). The program is capable of simulating and rendering the output at realtime speeds, for a number of particles up to 30,000.
+
+This project was written in CUDA C/C++.
+
+[Github repo](http://github.com/yariza/rainborg)  
+[Video sample](/downloads/rainborg.mp4)

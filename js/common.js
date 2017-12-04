@@ -2,12 +2,7 @@ var randomtext = [
 	'game dev',
 	'Columbia student',
 	'Juilliard student',
-	'Geomag fan',
-	'cartoonist',
-	'music critic',
 	'musician',
-	'TI-84 programmer',
-	'designer wannabe',
 	'dreamer'
 ];
 

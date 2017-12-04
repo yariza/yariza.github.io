@@ -16,12 +16,12 @@ body {
 
 h1 {
     margin-bottom: 0.5em;
-    margin-top: 1em;
+    margin-top: 2em;
 }
 
 h2 {
     margin-bottom: 0em;
-    margin-top: 1em;
+    margin-top: 2em;
 }
 
 p {
@@ -67,6 +67,7 @@ article {
     font-weight: 300;
     font-size: 2.3em;
     display: inline-block;
+    margin-right: 0.5em;
 }
 
 .site .header .title a {
@@ -82,6 +83,7 @@ article {
 }
 
 .site .header .title .subhead {
+    margin-top: 0.3em;
     font-weight: 300;
     font-size: 0.44em;
     position: absolute;
