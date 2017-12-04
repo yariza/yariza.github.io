@@ -13,7 +13,7 @@ I am a computer science and music student interested in the intersection of Comp
 
 03/2017
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Z8oDZE83tGQ" frameborder="0" allowfullscreen></iframe>
+<video autoplay loop src="/downloads/orb_demo.mp4" width="560"></video>
 
 I contributed interactive art for the Juilliard production of _Cracked Orlando_, a multimedia performance piece by composer Jonathan Dawe. I was responsible for two elements in the show: a rotating and evolving "orb" which was projected as a hologram and controlled by an array of proximity sensors; and a virtual avatar of the character Alcina, motion-tracked by Kinect and augmented with particle effects.
 
@@ -46,26 +46,24 @@ Fluid is an audiovisual piece that I created. The piece was made using Ableton L
 
 Yujin Ariza, Eszter Offertaler
 
-![](http://github.com/yariza/vango/raw/master/results/columbia2_textured.png)
+<video autoplay loop src="/downloads/columbia2_textured.mp4" width="560" controls></video>
 
 We convert photographs of scenery into painting representations. After analysis of the image, a "canvas" file is outputted by the program, given a specific "style" file for _vango_ to paint in. After this, the painting can be rendered in either a textured or untextured format.
 
 This project was written in C++, and uses the OpenCV framework.
 
 [Github repo](http://github.com/yariza/vango)  
-[Video sample](/downloads/columbia2_textured.mp4)
 
 ## _Rainborg_ – Position-based Fluid Simulation
-
-![](https://raw.githubusercontent.com/yariza/Rainborg/master/results/grid-dambreak.png)
 
 05/2015
 
 Yujin Ariza, Eszter Offertaler
+
+<video autoplay loop src="/downloads/rainborg.mp4" width="560" controls></video>
 
 We implemented a GPU-accelerated position-based fluid simulation, based on the paper by [Miles Macklin, and Matthaias Muller](http://mmacklin.com/pbf_sig_preprint.pdf). The program is capable of simulating and rendering the output at realtime speeds, for a number of particles up to 30,000.
 
 This project was written in CUDA C/C++.
 
 [Github repo](http://github.com/yariza/rainborg)  
-[Video sample](/downloads/rainborg.mp4)

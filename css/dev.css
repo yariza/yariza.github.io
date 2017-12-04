@@ -1,6 +1,19 @@
-.post img {
-	display: block;
-	float: right;
-	height: auto;
-	width: 280px;
+.site video {
+    width: 560px;
+}
+
+@media (max-width: 850px) {
+    .site video {
+        width: 100%;
+    }
+}
+
+.site iframe {
+    width: 560px;
+}
+
+@media (max-width: 850px) {
+    .site iframe {
+        width: 100%;
+    }
 }

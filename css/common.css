@@ -52,30 +52,51 @@ article {
     line-height: 1.5em;
 }
 
+@media (max-width: 850px) {
+    .site {
+        width: 90%;
+    }
+}
+
 .site .header {
-    margin-bottom: 80px;
+    margin-bottom: 40px;
     display: inline-block;
 }
 
+
 .site .header a {
+    white-space: nowrap;
     font-weight: 300;
     font-size: 1.2em;
     text-decoration: none;
 }
 
 .site .header .title {
+    margin-bottom: 40px;
     font-weight: 300;
     font-size: 2.3em;
     display: inline-block;
     margin-right: 0.5em;
+    text-align: right;
 }
 
+@media (max-width: 850px) {
+    .site .header .title {
+        display: block;
+    }
+}
 .site .header .title a {
     color: #555;
 }
 
 .site .header .title a:hover {
     color: #000;
+}
+
+@media (max-width: 850px) {
+    .site .header .title a {
+        right: 0px;
+    }
 }
 
 .site .header .title {
