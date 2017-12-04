@@ -13,7 +13,7 @@ I am a computer science and music student interested in the intersection of Comp
 
 03/2017
 
-<video autoplay loop src="/downloads/orb_demo.mp4" width="560"></video>
+<video autoplay loop controls src="/downloads/orb_demo.mp4" width="560"></video>
 
 I contributed interactive art for the Juilliard production of _Cracked Orlando_, a multimedia performance piece by composer Jonathan Dawe. I was responsible for two elements in the show: a rotating and evolving "orb" which was projected as a hologram and controlled by an array of proximity sensors; and a virtual avatar of the character Alcina, motion-tracked by Kinect and augmented with particle effects.
 
