@@ -7,7 +7,15 @@ extra-js: [/js/dev.js]
 
 [Download Resume in PDF format](/downloads/yujin_resume_technical.pdf)
 
-I am a computer science and music student interested in the intersection of Computer Graphics, Human Computer Interaction, and music performance. I am passionate about creative extensions of technology used in art form.
+I am a computer science and music student interested in the intersection of Computer Graphics, Human Computer Interaction, and procedural sound and music. I am passionate about creative extensions of technology used in art form.
+
+## _Music in Motion_
+
+01/2018 – current
+
+_Music in Motion_ is a project at the Entertainment Technology Center, Carnegie Mellon University, about creating music in virtual reality using body movement. For this project, we required a fully procedural and spatial audio system, which would be fully controllable via the guests' body movements, which were tracked in Unity using the HTC Vive. As part of this project, I designed and implemented interactive instruments and audio processing chains in SuperCollider, which were then controlled from Unity, through OSC. In addition, I implemented a 12-speaker ambisonic sound setup, for use in conjunction with the virtual reality play space, and developed tools to quickly audition interaction mappings between Unity and SuperCollider.
+
+[Project Homepage](https://www.etc.cmu.edu/projects/music-in-motion/)
 
 ## _Cracked Orlando_
 
