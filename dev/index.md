@@ -11,9 +11,11 @@ I am a computer science and music student interested in the intersection of Comp
 
 ## _Music in Motion_
 
-01/2018 – current
+01/2018 – 06/2018
 
-_Music in Motion_ is a project at the Entertainment Technology Center, Carnegie Mellon University, about creating music in virtual reality using body movement. For this project, we required a fully procedural and spatial audio system, which would be fully controllable via the guests' body movements, which were tracked in Unity using the HTC Vive. As part of this project, I designed and implemented interactive instruments and audio processing chains in SuperCollider, which were then controlled from Unity, through OSC. In addition, I implemented a 12-speaker ambisonic sound setup, for use in conjunction with the virtual reality play space, and developed tools to quickly audition interaction mappings between Unity and SuperCollider.
+<iframe width="560" height="315" src="https://www.youtube.com/embed/au1gkM4lRRs?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+_Music in Motion_ was a semester- project at the Entertainment Technology Center, Carnegie Mellon University, about creating music in virtual reality using body movement. For this project, we required a fully procedural and spatial audio system, which would be fully controllable via the guests' body movements, which were tracked in Unity using the HTC Vive. As part of this project, I designed and implemented interactive instruments and audio processing chains in SuperCollider, which were then controlled from Unity, through OSC. In addition, I implemented a 12-speaker ambisonic sound setup, for use in conjunction with the virtual reality play space, and developed tools to quickly audition interaction mappings between Unity and SuperCollider.
 
 [Project Homepage](https://www.etc.cmu.edu/projects/music-in-motion/)
 
