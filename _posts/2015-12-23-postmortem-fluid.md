@@ -5,7 +5,9 @@ date:   2015-12-23 16:12:17
 tags: graphics projects max jitter ableton music
 ---
 
-[Fluid](https://youtu.be/BmHt5eSwW_A) is an audiovisual piece I created using Max/MSP and Ableton Live. In this post, I'll try to explain some of the motivations behind the piece as well as the technical challenges.
+<iframe width="560" height="315" src="https://www.youtube.com/embed/BmHt5eSwW_A" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+_Fluid_ is an audiovisual piece I created using Max/MSP and Ableton Live. In this post, I'll try to explain some of the motivations behind the piece as well as the technical challenges.
 
 Here we go!
 
