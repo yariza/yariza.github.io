@@ -9,6 +9,14 @@ extra-js: [/js/dev.js]
 
 I am a computer science and music student interested in the intersection of Computer Graphics, Human Computer Interaction, and procedural sound and music. I am passionate about creative extensions of technology used in art form.
 
+## _Sand VR_
+
+<p class="meta">01/2018 — 05/2018</p>
+
+<img width="560" src="/img/2017-08-17-AK2A1383.JPG" />
+
+_Sand VR_ was a semester-long independent study project that I worked on with [Anna Henson](https://www.annahenson.com/), about exploring tangible interfaces and relational experiences in virtual reality. Read the [blog post](/blog/2017/08/17/sand-vr) to find out more!
+
 ## _Music in Motion_
 
 <p class="meta">01/2018 – 05/2018</p>
