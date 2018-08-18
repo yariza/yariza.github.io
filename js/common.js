@@ -1,7 +1,9 @@
 var randomtext = [
 	'game dev',
-	'Columbia student',
-	'Juilliard student',
+	'Columbia alum',
+	'Juilliard alum',
+	'CMU student',
+	'creative coder',
 	'musician',
 	'dreamer'
 ];
@@ -9,6 +11,9 @@ var randomtext = [
 var current_nav = 'nav-home';
 
 $(document).ready(function () {
+
+	var prev_prev_random = -1;
+	var prev_random = -1;
 
 	$('#'+current_nav).css('color', '#000');
 	var subhead = $('.subhead');
@@ -35,8 +40,15 @@ $(document).ready(function () {
 		else if (id == 'nav-blog')
 			text = 'blogger';
 		else if (id == 'nav-home') {
-			if (current_nav == 'nav-home')
-				text = randomtext[Math.floor(Math.random()*randomtext.length)];
+			if (current_nav == 'nav-home') {
+				var new_random;
+				do {
+					new_random = Math.floor(Math.random()*randomtext.length);
+				} while (new_random === prev_random || new_random === prev_prev_random);
+				prev_prev_random = prev_random;
+				prev_random = new_random;
+				text = randomtext[new_random];
+			}
 			else
 				text = 'home'
 		}
