@@ -1,19 +1,11 @@
-.site video {
-    width: 560px;
+.site video, .site img, .site iframe {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
 @media (max-width: 850px) {
-    .site video {
-        width: 100%;
-    }
-}
-
-.site iframe {
-    width: 560px;
-}
-
-@media (max-width: 850px) {
-    .site iframe {
+    .site video, .site img, .site iframe {
         width: 100%;
     }
 }
