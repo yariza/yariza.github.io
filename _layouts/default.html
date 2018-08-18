@@ -19,12 +19,12 @@
 	<link rel="stylesheet" href="/css/syntax.css">
 	<!-- Custom CSS -->
 	<link rel="stylesheet" href="/css/common.css">
+	{% if page.layout == 'post' %}
+	<link rel="stylesheet" type="text/css" href="/css/post.css">
+	{% endif %}
 	{% for css_name in page.extra-css %}
 	<link rel="stylesheet" type="text/css" href="{{ css_name }}">
 	{% endfor %}
-	{% if page.post_css %}
-	<link rel="stylesheet" type="text/css" href="{{ page.post_css }}">
-	{% endif %}
 
 	<!--Scripts -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
