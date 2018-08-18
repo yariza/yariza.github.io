@@ -9,7 +9,7 @@ For the past week, I was busy making visuals for an interactive musical piece th
 
 Check it out here (skip to 56:16):
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/jxIgfTY1KEs" frameborder="0" allowfullscreen></iframe>
+<iframe width="800" height="450" src="https://www.youtube.com/embed/jxIgfTY1KEs" frameborder="0" allowfullscreen></iframe>
 
 This (the live performance) is actually one half of what this project entailed. The live show performances uses video renders of the virtual environments; however I was also tasked with creating a VR environment, using Vive, which would place you in the middle of the scene, complete with surround audio and 3D video of the virtual performers.
 
