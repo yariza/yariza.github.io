@@ -20,13 +20,12 @@ h1 {
 }
 
 h2 {
-    margin-bottom: 0em;
+    margin-bottom: 0.2em;
     margin-top: 2em;
 }
 
-p {
-    margin-top: 0.3em;
-    margin-bottom: 0.7em;
+p, iframe, video {
+    margin-bottom: 1.0em;
 }
 
 a {
@@ -127,6 +126,10 @@ article {
 
 .site .meta {
     color: #999;
+}
+
+.site .meta + .meta {
+    margin-top: -1.0em;
 }
 
 .site .footer {

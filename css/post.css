@@ -12,8 +12,16 @@ ul.posts span {
   font-size: 80%;
 }
 
+.title {
+  margin-bottom: 1.5em;
+}
+
 h1, h2, h3, h4, h5, h6 {
   color: #2D2D2D;
+}
+
+.post h1, .post h2, .post h3, .post h4, .post h5, .post h6 {
+  margin-bottom: 0.6em;
 }
 
 /* standard */

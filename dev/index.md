@@ -11,7 +11,7 @@ I am a computer science and music student interested in the intersection of Comp
 
 ## _Music in Motion_
 
-01/2018 – 05/2018
+<p class="meta">01/2018 – 05/2018</p>
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/au1gkM4lRRs?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
@@ -21,7 +21,7 @@ _Music in Motion_ was a semester-project at the Entertainment Technology Center,
 
 ## _Cracked Orlando_
 
-03/2017
+<p class="meta">03/2017</p>
 
 <video autoplay loop controls src="/downloads/orb_demo.mp4" width="560"></video>
 
@@ -32,7 +32,7 @@ I contributed interactive art for the Juilliard production of _Cracked Orlando_,
 
 ## _Kaze (The Wind)_
 
-06/2016
+<p class="meta">06/2016</p>
 
 Mari Kimura, Liubo Borissov, Yujin Ariza
 
@@ -44,7 +44,7 @@ I collaborated with violinist and composer Mari Kimura for her work, for violin,
 
 ## _Fluid_
 
-12/2015
+<p class="meta">12/2015</p>
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/BmHt5eSwW_A" frameborder="0" allowfullscreen></iframe>
 
@@ -52,9 +52,9 @@ Fluid is an audiovisual piece that I created. The piece was made using Ableton L
 
 ## _Vango_ – Painterly Representations of Images
 
-10/2015
+<p class="meta">10/2015</p>
 
-Yujin Ariza, Eszter Offertaler
+<p class="meta">Yujin Ariza, Eszter Offertaler</p>
 
 <video autoplay loop src="/downloads/columbia2_textured.mp4" width="560" controls></video>
 
@@ -66,9 +66,9 @@ This project was written in C++, and uses the OpenCV framework.
 
 ## _Rainborg_ – Position-based Fluid Simulation
 
-05/2015
+<p class="meta">05/2015</p>
 
-Yujin Ariza, Eszter Offertaler
+<p class="meta">Yujin Ariza, Eszter Offertaler</p>
 
 <video autoplay loop src="/downloads/rainborg.mp4" width="560" controls></video>
 
