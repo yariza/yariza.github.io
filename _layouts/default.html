@@ -35,7 +35,6 @@
 	<script type="text/javascript" src="/js/common.js"></script>
 	<script>
 		current_nav = "{{ page.path }}".replace("index.html", "").split("/")[0];
-		console.log(current_nav);
 	</script>
 	{% for js_name in page.extra-js %}
 	<script type="text/javascript" src="{{ js_name }}"></script>
