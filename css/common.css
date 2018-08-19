@@ -45,9 +45,16 @@ article {
 }
 
 .site {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
     text-align: left;
+    min-height: 100%;
     width: 800px;
-    margin: 3em auto 2em;
+    padding-top: 3em;
+    padding-bottom: 2em;
+    margin-left: auto;
+    margin-right: auto;
     line-height: 1.5em;
 }
 
@@ -142,6 +149,10 @@ article {
 
 .site .meta + .meta {
     margin-top: -1.0em;
+}
+
+.site .content {
+    flex-grow: 1;
 }
 
 .site .footer {
