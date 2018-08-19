@@ -8,7 +8,7 @@ var randomtext = [
 	'dreamer'
 ];
 
-var current_nav = 'nav-home';
+var current_nav = '';
 
 $(document).ready(function () {
 
@@ -18,12 +18,14 @@ $(document).ready(function () {
 	$('#'+current_nav).css('color', '#000');
 	var subhead = $('.subhead');
 	var text = "";
-	if (current_nav == 'nav-violin')
+	if (current_nav == 'violin')
 		text = 'violinist';
-	else if (current_nav == 'nav-dev')
+	else if (current_nav == 'dev')
 		text = 'developer';
-	else if (current_nav == 'nav-blog')
+	else if (current_nav == 'blog')
 		text = 'blogger';
+	else if (current_nav == 'about')
+		text = '¯\\_(ツ)_/¯';
 
 	subhead.text(text);
 	subhead.show();
@@ -39,8 +41,10 @@ $(document).ready(function () {
 			text = 'developer';
 		else if (id == 'nav-blog')
 			text = 'blogger';
-		else if (id == 'nav-home') {
-			if (current_nav == 'nav-home') {
+		else if (id == 'nav-about')
+			text = '¯\\_(ツ)_/¯';
+		else {
+			if (current_nav == '') {
 				var new_random;
 				do {
 					new_random = Math.floor(Math.random()*randomtext.length);
@@ -64,7 +68,7 @@ $(document).ready(function () {
 	$('.hover').mouseleave(function (e) {
 		var subhead = $('.subhead');
 		var id = $(e.target).attr('id');
-		if (id != current_nav || current_nav == 'nav-home') {
+		if (id != 'nav-' + current_nav || current_nav == '') {
 			subhead.finish();
 			subhead.fadeOut(200);
 		}
@@ -74,13 +78,15 @@ $(document).ready(function () {
 
 		var subhead = $('.subhead');
 		var text = "";
-		if (current_nav == 'nav-violin')
+		if (current_nav == 'violin')
 			text = 'violinist';
-		else if (current_nav == 'nav-dev')
+		else if (current_nav == 'dev')
 			text = 'developer';
-		else if (current_nav == 'nav-blog')
+		else if (current_nav == 'blog')
 			text = 'blogger';
-
+		else if (current_nav == 'about')
+			text = '¯\\_(ツ)_/¯';
+	
 		if (subhead.is(':hidden') || text != subhead.text()) {
 			subhead.finish();
 			subhead.text(text);

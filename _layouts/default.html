@@ -33,6 +33,10 @@
 	<!--Scripts -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script type="text/javascript" src="/js/common.js"></script>
+	<script>
+		current_nav = "{{ page.path }}".replace("index.html", "").split("/")[0];
+		console.log(current_nav);
+	</script>
 	{% for js_name in page.extra-js %}
 	<script type="text/javascript" src="{{ js_name }}"></script>
 	{% endfor %}
@@ -46,6 +50,7 @@
 				<a class="hover" id="nav-home" href="/">Yujin Ariza</a>
 				<div class="subhead">Developer</div>
 			</div>
+			<a class="extra hover" id="nav-about" href="/about">about me</a>
 			<a class="extra hover" id="nav-dev" href="/dev">development</a>
 			<a class="extra hover" id="nav-violin" href="/violin">violin</a>
 			<a class="extra hover" id="nav-blog" href="/blog">blog</a>

@@ -1,1 +1,0 @@
-current_nav = 'nav-blog'
