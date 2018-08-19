@@ -2,7 +2,6 @@
 layout: summary
 title: Development
 extra-css: [/css/dev.css]
-extra-js: [/js/dev.js]
 ---
 
 [Download Resume in PDF format](/downloads/yujin_resume_technical.pdf)

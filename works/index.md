@@ -2,7 +2,6 @@
 layout: summary
 title: Works
 extra-css: [/css/works.css]
-extra-js: [/js/works.js]
 redirect: /dev/
 ---
 
