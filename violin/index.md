@@ -1,6 +1,6 @@
 ---
 layout: summary
-title: Violin — Yujin Ariza
+title: Violin
 extra-css: [/css/violin.css]
 extra-js: [/js/violin.js]
 ---

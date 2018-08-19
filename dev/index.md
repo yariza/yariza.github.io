@@ -1,6 +1,6 @@
 ---
 layout: summary
-title: Development — Yujin Ariza
+title: Development
 extra-css: [/css/dev.css]
 extra-js: [/js/dev.js]
 ---
