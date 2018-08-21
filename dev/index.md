@@ -6,7 +6,7 @@ extra-css: [/css/dev.css]
 
 ## _Sand VR_
 
-<p class="meta">01/2018 — 05/2018</p>
+<p class="meta">01/2018 – 05/2018</p>
 
 <img src="/img/2017-08-17-AK2A1383.JPG" />
 
