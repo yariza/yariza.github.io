@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	var prev_prev_random = -1;
 	var prev_random = -1;
 
-	$('#'+current_nav).css('color', '#000');
+	$('#nav-'+current_nav).css('color', '#000');
 	var subhead = $('.subhead');
 	var text = "";
 	if (current_nav == 'violin')

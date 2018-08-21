@@ -4,10 +4,6 @@ title: Development
 extra-css: [/css/dev.css]
 ---
 
-[Download Resume in PDF format](/downloads/yujin_resume_technical.pdf)
-
-I am a computer science and music student interested in the intersection of Computer Graphics, Human Computer Interaction, and procedural sound and music. I am passionate about creative extensions of technology used in art form.
-
 ## _Sand VR_
 
 <p class="meta">01/2018 — 05/2018</p>
