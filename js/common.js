@@ -10,7 +10,7 @@ var randomtext = [
 
 var current_nav = '';
 
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function() {
 
 	var prev_prev_random = -1;
 	var prev_random = -1;
@@ -95,5 +95,5 @@ $(document).ready(function () {
 		}
 	});
 
-})
+});
 
