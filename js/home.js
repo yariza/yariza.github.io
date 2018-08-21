@@ -358,13 +358,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
     ctx.draw = function() {
         ctx.lineWidth = 2.0;
-        ctx.strokeStyle = '#999';
+        var baseColor = 0.6;
         for (var j = 0; j < gridDim.y; j++)
         {
             var jNorm = j / (gridDim.y - 1);
             var alpha = smoothstep(0.5, 0, abs(jNorm - 0.5));
-            var grayscale = floor(lerp(1, 0.6, alpha) * 255);
-            ctx.strokeStyle = 'rgb(' + grayscale + ', ' + grayscale + ', ' + grayscale + ')';
 
             for (var i = 0; i < gridDim.x; i++)
             {
@@ -379,10 +377,17 @@ document.addEventListener("DOMContentLoaded", function() {
                 v.y = v.y;
 
                 var len = sqrt(v.x * v.x + v.y * v.y);
-                var newLen = min(gridSize, len);
+                if (len === 0) continue;
 
-                v.x = v.x * newLen / len;
-                v.y = v.y * newLen / len;
+                var scale = 1 - pow(1.5, -len / gridSize);
+
+                var color = alpha * scale;
+                var grayscale = floor(lerp(1.0, 0.4, color) * 255);
+                ctx.strokeStyle = 'rgb(' + grayscale + ', ' + grayscale + ', ' + grayscale + ')';
+    
+                var constrainedLen = min(gridSize * 0.7, len / 2);
+                v.x = v.x * constrainedLen / len;
+                v.y = v.y * constrainedLen / len;
 
                 ctx.beginPath();
                 ctx.moveTo(p.x, p.y);
