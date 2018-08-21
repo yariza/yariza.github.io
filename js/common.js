@@ -32,6 +32,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	$(".hover").mouseenter(function(e) {
 
+		var iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+		if (iOS) return; // don't do hover shenanigans on ios
+
 		var subhead = $('.subhead');
 		var text = "";
 		var id = $(e.target).attr('id');

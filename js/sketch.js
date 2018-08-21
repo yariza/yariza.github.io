@@ -209,7 +209,10 @@
 
         if ( isString( node ) )
 
-          target[ ( on ? 'add' : 'remove' ) + 'EventListener' ].call( target, node, handler, false );
+        target[ ( on ? 'add' : 'remove' ) + 'EventListener' ].call( target, node, handler, {
+          passive: false,
+          capture: false,
+        });
 
         else if ( isFunction( node ) )
 

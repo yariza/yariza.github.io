@@ -316,6 +316,12 @@ document.addEventListener("DOMContentLoaded", function() {
         pressure = new Float32Array(numCells);
     }
 
+    ctx.touchstart = function(event) {
+        if (event.target.tagName.toLowerCase() !== 'a'){
+            event.preventDefault();
+        }
+    }
+
     ctx.mousemove = function() {
         var mouse = ctx.mouse;
         if (mouse.dx === 0 && mouse.dy === 0) return;
