@@ -8,11 +8,16 @@ document.addEventListener("DOMContentLoaded", function() {
     var mouseSpeed = 5;
     var timeScale = 5;
     var iterations = 20;
+    var noiseScale = 0.02;
+    var noiseFreq = 0.05;
+    var noiseEvolution = 0.2;
 
     var gridDim = {
         x: 0,
         y: 0,
     };
+
+    var simplex = new SimplexNoise();
 
     var velocity_u, velocity_v;
     var next_velocity_u, next_velocity_v;
@@ -313,6 +318,38 @@ document.addEventListener("DOMContentLoaded", function() {
         project(u, v, u0, v0);
     }
 
+    function computeCurl(x, y, t){
+        var eps = 0.0001;
+      
+        //Find rate of change in X direction
+        var n1 = simplex.noise3D(x + eps, y, t);
+        var n2 = simplex.noise3D(x - eps, y, t);
+      
+        //Average to find approximate derivative
+        var a = (n1 - n2)/(2 * eps);
+      
+        //Find rate of change in Y direction
+        var n1 = simplex.noise3D(x, y + eps, t);
+        var n2 = simplex.noise3D(x, y - eps, t);
+      
+        //Average to find approximate derivative
+        var b = (n1 - n2)/(2 * eps);
+      
+        //Curl
+        return [b, -a];
+    }
+            
+    function add_velocity(u, v) {
+        var t = ctx.millis * noiseEvolution / 1000;
+        for (var i = 1; i <= gridDim.x; i++) {
+            for (var j = 1; j <= gridDim.y; j++) {
+                var curl = computeCurl(i * noiseFreq, j * noiseFreq, t);
+                setValue(u, i, j, getValue(u, i, j) + curl[0] * noiseScale);
+                setValue(v, i, j, getValue(v, i, j) + curl[1] * noiseScale);
+            }
+        }
+    }
+
     // SKETCH
 
     var ctx = Sketch.create({
@@ -364,6 +401,8 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     ctx.update = function() {
+
+        add_velocity(velocity_u, velocity_v);
 
         next_velocity_u.set(velocity_u);
         next_velocity_v.set(velocity_v);
