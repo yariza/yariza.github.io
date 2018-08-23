@@ -34,7 +34,7 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script type="text/javascript" src="/js/common.js"></script>
 	<script>
-		current_nav = "{{ page.path }}".replace("index.html", "").split("/")[0];
+		current_nav = "{{ page.url }}".split("/")[1];
 	</script>
 	{% for js_name in page.extra-js %}
 	<script type="text/javascript" src="{{ js_name }}"></script>
