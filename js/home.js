@@ -41,9 +41,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     var isTouch = is_touch_device();
 
-    function bressenhamLine(inx0, iny0, inx1, iny1) {
-        var points = [];
-
+    function bressenhamLine(inx0, iny0, inx1, iny1, callback) {
         var x0 = floor(inx0);
         var y0 = floor(iny0);
         var x1 = floor(inx1);
@@ -85,6 +83,8 @@ document.addEventListener("DOMContentLoaded", function() {
         var y = y0;
         var xDraw, yDraw;
 
+        var once = false;
+
         for (var x = x0; x != x1; x += xstep) {
             if (steep) {
                 xDraw = y;
@@ -95,11 +95,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 yDraw = y;
             }
 
-            // plot
-            points.push({
-                x: xDraw,
-                y: yDraw,
-            });
+            callback(xDraw, yDraw);
 
             if (e > 0) {
                 e += twodytwodx; //E += 2*Dy - 2*Dx;
@@ -108,16 +104,13 @@ document.addEventListener("DOMContentLoaded", function() {
             else {
                 e += twody; //E += 2*Dy;
             }
+
+            once = true;
         }
 
-        if (points.length === 0) {
-            points.push({
-                x: inx0,
-                y: iny0,
-            });
+        if (!once) {
+            callback(inx0, iny0);
         }
-
-        return points;
     }
 
     function clamp(val, mmin, mmax) {
@@ -387,17 +380,14 @@ document.addEventListener("DOMContentLoaded", function() {
         var oi = clamp(floor(mouse.ox / gridSize), 0, gridDim.x - 1);
         var oj = clamp(floor(mouse.oy / gridSize), 0, gridDim.y - 1);
 
-        var points = bressenhamLine(i, j, oi, oj);
-
-        for (var index = 0; index < points.length; index++) {
-            var p = points[index];
-            var v = getVelocity(p.x, p.y);
+        bressenhamLine(i, j, oi, oj, function(px, py) {
+            var v = getVelocity(px, py);
 
             v.x += mouse.dx * mouseSpeed;
             v.y += mouse.dy * mouseSpeed;
 
-            setVelocity(p.x, p.y, v);
-        }
+            setVelocity(px, py, v);
+        });
     }
 
     ctx.update = function() {
