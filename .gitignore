@@ -2,3 +2,9 @@
 _site
 *.sublime-workspace
 .vscode/
+_site
+.sass-cache
+.jekyll-metadata
+public
+node_modules
+yarn.lock
