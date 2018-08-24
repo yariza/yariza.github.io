@@ -1,6 +1,6 @@
 ---
 layout: default
-extra-js: [/js/sketch.min.js, /js/simplex-noise.min.js, /js/home.js]
+extra-js: [/js/bundle.js]
 extra-css: [/css/home.css]
 ---
 
