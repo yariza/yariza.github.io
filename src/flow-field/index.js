@@ -31,7 +31,7 @@ export default class FlowField {
         this.ctx.draw = this.draw.bind(this);
     }
 
-    getName = () => {
+    static getName = () => {
         return 'flow-field';
     }
 
@@ -338,6 +338,8 @@ export default class FlowField {
     }
 
     resize = () => {
+        if (!this.ctx) return;
+
         this.gridDim.x = floor(this.ctx.width / this.gridSize);
         this.gridDim.y = floor(this.ctx.height / this.gridSize);
 
@@ -351,8 +353,11 @@ export default class FlowField {
     };
 
     touchstart = (event) => {
-
-        if (isTouch && event.target.tagName.toLowerCase() !== 'a'){
+        // super jank way to prevent scrolling in mobile but keep all the clickables clickable
+        let classList = event.target.classList;
+        if (isTouch && event.target.tagName.toLowerCase() !== 'a' &&
+                !classList.contains('sketch-left') &&
+                !classList.contains('sketch-right')) {
             event.preventDefault();
         }
     }

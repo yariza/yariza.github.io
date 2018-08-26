@@ -9,3 +9,29 @@
     letter-spacing: 0.5px;
     font-weight: 300;
 }
+
+.sketch-control {
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2rem;
+    font-family: monospace;
+}
+
+.sketch-left, .sketch-right {
+    cursor: pointer;
+}
+
+.sketch-control .disabled {
+    cursor: default;
+    color: #ccc;
+}
+
+.sketch-title {
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+    min-width: 100px;
+}
