@@ -128,26 +128,26 @@ export default class FlowField {
 
     getVelocity = (i, j) => {
         return {
-            x: this.getValue(this.next_velocity_u, i + 1, j + 1),
-            y: this.getValue(this.next_velocity_v, i + 1, j + 1),
+            x: this.getValue(this.velocity_u, i + 1, j + 1),
+            y: this.getValue(this.velocity_v, i + 1, j + 1),
         };
     }
 
     setVelocity = (i, j, vel) => {
-        this.setValue(this.next_velocity_u, i + 1, j + 1, vel.x);
-        this.setValue(this.next_velocity_v, i + 1, j + 1, vel.y);
+        this.setValue(this.velocity_u, i + 1, j + 1, vel.x);
+        this.setValue(this.velocity_v, i + 1, j + 1, vel.y);
     }
 
     swap_u = () => {
-        let tmp = this.next_velocity_u;
-        this.next_velocity_u = this.next_velocity_u;
-        this.next_velocity_u = tmp;
+        let tmp = this.velocity_u;
+        this.next_velocity_u = this.velocity_u;
+        this.velocity_u = tmp;
     }
 
     swap_v = () => {
-        let tmp = this.next_velocity_v;
-        this.next_velocity_v = this.next_velocity_v;
-        this.next_velocity_v = tmp;
+        let tmp = this.velocity_v;
+        this.next_velocity_v = this.velocity_v;
+        this.velocity_v = tmp;
     }
 
     interpolateD = (d, i, j) => {
@@ -170,9 +170,9 @@ export default class FlowField {
     }
 
     set_boundary_corners = (x) => {
-        this.setValue(x, 0            , 0            , 0.5 * (this.getValue(x, 1, 0) + this.getValue(x, 0, 1)));
-        this.setValue(x, 0            , this.gridDim.y + 1, 0.5 * (this.getValue(x, 1, this.gridDim.y + 1) + this.getValue(x, 0, this.gridDim.y)));
-        this.setValue(x, this.gridDim.x + 1, 0            , 0.5 * (this.getValue(x, this.gridDim.x, 0) + this.getValue(x, this.gridDim.x + 1, 1)));
+        this.setValue(x, 0                 , 0                 , 0.5 * (this.getValue(x, 1, 0) + this.getValue(x, 0, 1)));
+        this.setValue(x, 0                 , this.gridDim.y + 1, 0.5 * (this.getValue(x, 1, this.gridDim.y + 1) + this.getValue(x, 0, this.gridDim.y)));
+        this.setValue(x, this.gridDim.x + 1, 0                 , 0.5 * (this.getValue(x, this.gridDim.x, 0) + this.getValue(x, this.gridDim.x + 1, 1)));
         this.setValue(x, this.gridDim.x + 1, this.gridDim.y + 1, 0.5 * (this.getValue(x, this.gridDim.x, this.gridDim.y + 1) + this.getValue(x, this.gridDim.x + 1, this.gridDim.y)));
     }
 
@@ -220,7 +220,7 @@ export default class FlowField {
                 for (let j = 1; j <= this.gridDim.y; j++) {
                     this.setValue(x, i, j,
                         (this.getValue(x0, i, j) + a * (this.getValue(x, i - 1, j) + this.getValue(x, i + 1, j) +
-                                                   this.getValue(x, i, j - 1) + this.getValue(x, i, j + 1))
+                                                        this.getValue(x, i, j - 1) + this.getValue(x, i, j + 1))
                         ) / (1 + 4 * a)
                     );
                 }
@@ -246,8 +246,8 @@ export default class FlowField {
         for (let i = 1; i <= this.gridDim.x; i++) {
             for (let j = 1; j <= this.gridDim.y; j++) {
                 this.setValue(this.divergence, i, j,
-                    -0.5 * h * (this.getValue(this.next_velocity_u, i + 1, j) - this.getValue(this.next_velocity_u, i - 1, j) +
-                                this.getValue(this.next_velocity_v, i, j + 1) - this.getValue(this.next_velocity_v, i, j - 1))
+                    -0.5 * h * (this.getValue(u0, i + 1, j) - this.getValue(u0, i - 1, j) +
+                                this.getValue(v0, i, j + 1) - this.getValue(v0, i, j - 1))
                 );
                 this.setValue(this.pressure, i, j, 0);
             }
@@ -261,9 +261,9 @@ export default class FlowField {
                 for (let j = 1; j <= this.gridDim.y; j++) {
                     this.setValue(this.pressure, i, j, 
                         (this.getValue(this.divergence, i, j) + this.getValue(this.pressure, i - 1, j) +
-                                                      this.getValue(this.pressure, i + 1, j) +
-                                                      this.getValue(this.pressure, i, j - 1) +
-                                                      this.getValue(this.pressure, i, j + 1)
+                                                                this.getValue(this.pressure, i + 1, j) +
+                                                                this.getValue(this.pressure, i, j - 1) +
+                                                                this.getValue(this.pressure, i, j + 1)
                         ) / 4
                     );
                 }
@@ -273,12 +273,12 @@ export default class FlowField {
 
         for (let i = 1; i <= this.gridDim.x; i++) {
             for (let j = 1; j <= this.gridDim.y; j++) {
-                this.setValue(this.next_velocity_u, i, j,
-                    this.getValue(this.next_velocity_u, i, j) -
+                this.setValue(u, i, j,
+                    this.getValue(u0, i, j) -
                     0.5 * (this.getValue(this.pressure, i + 1, j) - this.getValue(this.pressure, i - 1, j)) / h
                 );
-                this.setValue(this.next_velocity_v, i, j,
-                    this.getValue(this.next_velocity_v, i, j) -
+                this.setValue(v, i, j,
+                    this.getValue(v0, i, j) -
                     0.5 * (this.getValue(this.pressure, i, j + 1) - this.getValue(this.pressure, i, j - 1)) / h
                 );
             }
@@ -294,13 +294,13 @@ export default class FlowField {
         this.diffuse(v0, v, visc, dt);
         this.set_boundary_horizontal(v0);
 
-        this.project(u0, v0, u, v);
+        this.project(u, v, u0, v0);
 
         // advect u/v -> u0/v0
-        this.advect(u, u0, u0, v0, dt);
-        this.set_boundary_vertical(u);
-        this.advect(v, v0, u0, v0, dt);
-        this.set_boundary_horizontal(v);
+        this.advect(u0, u, u, v, dt);
+        this.set_boundary_vertical(u0);
+        this.advect(v0, v, u, v, dt);
+        this.set_boundary_horizontal(v0);
 
         this.project(u, v, u0, v0);
     }
@@ -342,8 +342,8 @@ export default class FlowField {
         this.gridDim.y = floor(this.ctx.height / this.gridSize);
 
         let numCells = (this.gridDim.x + 2) * (this.gridDim.y + 2);
-        this.next_velocity_u = new Float32Array(numCells);
-        this.next_velocity_v = new Float32Array(numCells);
+        this.velocity_u = new Float32Array(numCells);
+        this.velocity_v = new Float32Array(numCells);
         this.next_velocity_u = new Float32Array(numCells);
         this.next_velocity_v = new Float32Array(numCells);
         this.divergence = new Float32Array(numCells);
@@ -378,16 +378,22 @@ export default class FlowField {
 
     update = () => {
 
-        this.add_velocity(this.next_velocity_u, this.next_velocity_v);
+        if (this.swap === undefined) this.swap = false;
 
-        this.next_velocity_u.set(this.next_velocity_u);
-        this.next_velocity_v.set(this.next_velocity_v);
+        let u = this.swap ? this.next_velocity_u : this.velocity_u;
+        let v = this.swap ? this.next_velocity_v : this.velocity_v;
+        let next_u = this.swap ? this.velocity_u : this.next_velocity_u;
+        let next_v = this.swap ? this.velocity_v : this.next_velocity_v;
 
-        this.vel_step(this.next_velocity_u, this.next_velocity_v, this.next_velocity_u, this.next_velocity_v, this.viscosity, this.ctx.dt * this.timeScale / 1000);
+        this.add_velocity(u, v);
+
+        next_u.set(u);
+        next_v.set(v);
+
+        this.vel_step(next_u, next_v, u, v, this.viscosity, this.ctx.dt * this.timeScale / 1000);
 
         // swap velocity buffers;
-        this.swap_u();
-        this.swap_v();
+        this.swap = !this.swap;
     }
 
     draw = () => {
