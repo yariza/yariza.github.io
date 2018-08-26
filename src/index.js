@@ -4,7 +4,7 @@ import Waves from './waves';
 document.addEventListener("DOMContentLoaded", () => {
 
     let sketches = [
-        Waves,
+        // Waves,
         FlowField,
     ];
 

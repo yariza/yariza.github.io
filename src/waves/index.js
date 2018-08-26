@@ -25,10 +25,21 @@ export default class Waves {
     }
 
     setup = () => {
-        this.camera = new THREE.PerspectiveCamera( 75, this.ctx.width / this.ctx.height, 1, 10000 );
-        this.camera.position.z = 1000;
+        this.camera = new THREE.PerspectiveCamera( 75, this.ctx.width / this.ctx.height, 0.01, 100 );
+        this.camera.position.y = 0.5;
+        this.camera.position.z = 5;
+        this.camera.rotation.x = -15 / 180 * PI;
+
         this.scene = new THREE.Scene();
-        this.geometry = new THREE.CubeGeometry( 200, 200, 200 );
+        this.scene.background = new THREE.Color(0.9, 0.9, 0.9);
+
+        let waveGeo = new THREE.PlaneBufferGeometry(10, 10, 100, 100);
+        let waveMat = new THREE.MeshBasicMaterial( { color: 0xFFFFFF, wireframe: true } );
+        let waveMesh = this.waveMesh = new THREE.Mesh(waveGeo, waveMat);
+        waveMesh.rotation.x = HALF_PI;
+        this.scene.add(this.waveMesh);
+        
+        this.geometry = new THREE.CubeGeometry( 2, 2, 2 );
         this.material = new THREE.MeshBasicMaterial( { color: 0xFFFFFF, wireframe: true } );
         this.mesh = new THREE.Mesh( this.geometry, this.material );
         this.scene.add( this.mesh );
