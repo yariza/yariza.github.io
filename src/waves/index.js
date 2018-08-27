@@ -124,12 +124,22 @@ export default class Waves {
         this.now = now;
         this.dt = lerp((this.dt || 1000), dt, 0.1);
 
+        let upperThreshold = 40;
         let threshold = 20;
-        if (this.lowQMode && this.dt < threshold) {
-            console.log('switching to high q');
-            this.waveMesh.material = this.highQMat;
-            this.lowQMode = false;
+        if (this.lowQMode) {
+            if (this.dt < threshold) {
+                console.log('switching to high q');
+                this.waveMesh.material = this.highQMat;
+                this.lowQMode = false;
+            }
+        } else {
+            if (this.dt > upperThreshold) {
+                console.log('switching to low q');
+                this.waveMesh.material = this.lowQMat;
+                this.lowQMode = true;
+            }
         }
+
 
         let time = this.ctx.millis / 1000;
         this.waveMesh.material.uniforms.time.value = time;

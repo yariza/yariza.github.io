@@ -21,7 +21,7 @@ float fractalNoise(vec3 pos) {
     float value = 0.0;
 
     #pragma unroll_loop
-    for ( int i = 0; i < 5; i ++ ) {
+    for ( int i = 0; i < 2; i ++ ) {
         amp *= 0.48;
         value += snoise(sample) * amp;
         sample *= 2.0;
