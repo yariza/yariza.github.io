@@ -1,4 +1,4 @@
-precision highp float;
+precision mediump float;
 precision mediump int;
 
 #pragma glslify: snoise = require(./noise3D)
@@ -21,7 +21,7 @@ float fractalNoise(vec3 pos) {
     float value = 0.0;
 
     #pragma unroll_loop
-    for ( int i = 0; i < 8; i ++ ) {
+    for ( int i = 0; i < 5; i ++ ) {
         amp *= 0.48;
         value += snoise(sample) * amp;
         sample *= 2.0;

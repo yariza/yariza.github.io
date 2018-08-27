@@ -3,6 +3,8 @@ import * as THREE from 'three';
 let OrbitControls = require('three-orbit-controls')(THREE);
 import waveVert from './shaders/wave.vert';
 import waveFrag from './shaders/wave.frag';
+import waveVertLowQ from './shaders/wave-mobile.vert';
+import waveFragLowQ from './shaders/wave-mobile.frag';
 
 export default class Waves {
 
@@ -69,17 +71,29 @@ export default class Waves {
         this.targetAzimuth = this.azimuth = 0;
 
         let waveGeo = new THREE.PlaneBufferGeometry(10, 10, 100, 100);
-        let waveMat = this.waveMat = new THREE.RawShaderMaterial({
-            uniforms: {
-                time: { value: 0.5 },
-                noiseAmp: { value: 0.5 },
-                noiseFreq: { value: 0.3 },
-                noiseEvo: { value: 0.04 },
-            },
+
+        let uniforms = {
+            time: { value: 0.5 },
+            noiseAmp: { value: 0.5 },
+            noiseFreq: { value: 0.3 },
+            noiseEvo: { value: 0.04 },
+        };
+
+        let lowQMat = this.lowQMat = new THREE.RawShaderMaterial({
+            uniforms: uniforms,
+            vertexShader: waveVertLowQ,
+            fragmentShader: waveFragLowQ,
+        })
+
+        let highQMat = this.highQMat = new THREE.RawShaderMaterial({
+            uniforms: uniforms,
             vertexShader: waveVert,
             fragmentShader: waveFrag,
         });
-        let waveMesh = this.waveMesh = new THREE.Mesh(waveGeo, waveMat);
+        this.lowQMode = true;
+
+        let waveMesh = this.waveMesh = new THREE.Mesh(waveGeo, this.lowQMode ? lowQMat : highQMat);
+        waveMesh.material = lowQMat;
         waveMesh.rotation.x = -HALF_PI;
         this.scene.add(this.waveMesh);
     };
@@ -105,8 +119,20 @@ export default class Waves {
     }
 
     draw = () => {
+        let now = performance.now();
+        let dt = now - (this.now || now);
+        this.now = now;
+        this.dt = lerp((this.dt || 1000), dt, 0.1);
+
+        let threshold = 20;
+        if (this.lowQMode && this.dt < threshold) {
+            console.log('switching to high q');
+            this.waveMesh.material = this.highQMat;
+            this.lowQMode = false;
+        }
+
         let time = this.ctx.millis / 1000;
-        this.waveMat.uniforms.time.value = time;
+        this.waveMesh.material.uniforms.time.value = time;
 
         this.cameraPivot.rotation.x = this.elevation;
         this.cameraPivot.rotation.y = this.azimuth;
