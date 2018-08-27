@@ -58,13 +58,14 @@ export default class Waves {
         this.scene.background = new THREE.Color(0.99, 0.99, 0.99);
 
         this.cameraPivot = new THREE.Object3D();
+        this.cameraPivot.position.y = -0.3;
 
         this.camera = new THREE.PerspectiveCamera( 75, this.ctx.width / this.ctx.height, 0.01, 100 );
         this.camera.position.z = 5;
         this.cameraPivot.add(this.camera);
         this.scene.add(this.cameraPivot);
 
-        this.targetElevation = this.elevation = -5 / 180 * PI;
+        this.targetElevation = this.elevation = -10 / 180 * PI;
         this.targetAzimuth = this.azimuth = 0;
 
         let waveGeo = new THREE.PlaneBufferGeometry(10, 10, 100, 100);
@@ -87,7 +88,7 @@ export default class Waves {
         let relX = min(max(this.ctx.mouse.x / this.ctx.width, 0), 1);
         let relY = 1.0 - min(max(this.ctx.mouse.y / this.ctx.height, 0), 1);
         let azimuth = lerp(-5, 5, relX);
-        let elevation = lerp(-2, -10, relY);
+        let elevation = lerp(-7, -12, relY);
         this.targetAzimuth = azimuth / 180 * PI;
         this.targetElevation = elevation / 180 * PI;
     }

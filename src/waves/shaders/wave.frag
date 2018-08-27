@@ -50,7 +50,7 @@ void main() {
 
     vec3 lightDir = normalize(vec3(0.0, 1.0, 1.0));
 
-    color = vec3(clamp(dot(normal, lightDir) * 0.3 + fresnel * 0.4, 0.0, 1.0));
+    color = vec3(clamp(dot(normal, lightDir) * 0.2 + fresnel * 0.3, 0.0, 1.0));
 
     float fog = max(smoothstep(2.0, 0.3, depth), smoothstep(2.0, 6.0, depth));
     vec3 fogColor = vec3(1.0);
