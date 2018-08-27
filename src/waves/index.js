@@ -12,7 +12,9 @@ export default class Waves {
 
     constructor(options) {
 
-        this.renderer = new THREE.WebGLRenderer();
+        this.renderer = new THREE.WebGLRenderer({
+            antialias: true,
+        });
 
         this.ctx = Sketch.create(Object.assign(options, {
             type: 'webgl',
