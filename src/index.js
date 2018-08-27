@@ -1,10 +1,11 @@
 import FlowField from './flow-field';
 import Waves from './waves';
+import { isTouch } from './utils';
 
 document.addEventListener("DOMContentLoaded", () => {
 
     let sketches = [
-        // Waves,
+        Waves,
         FlowField,
     ];
 
@@ -50,6 +51,20 @@ document.addEventListener("DOMContentLoaded", () => {
             container: document.body,
             retina: 'auto'
         });
+
+        let oldTouchStart = curSketch.ctx.touchstart;
+        curSketch.ctx.touchstart = (event) => {
+            if (oldTouchStart) {
+                oldTouchStart(event);
+            }
+            // super jank way to prevent scrolling in mobile but keep all the clickables clickable
+            let classList = event.target.classList;
+            if (isTouch && event.target.tagName.toLowerCase() !== 'a' &&
+                    !classList.contains('sketch-left') &&
+                    !classList.contains('sketch-right')) {
+                event.preventDefault();
+            }
+        }
 
         document.getElementsByClassName('sketch-title')[0].textContent = sketches[curIndex].getName();
 

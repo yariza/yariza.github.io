@@ -1,6 +1,5 @@
 import SimplexNoise from 'simplex-noise';
 import Sketch from '../sketch';
-import { isTouch } from '../utils';
 
 export default class FlowField {
 
@@ -25,7 +24,6 @@ export default class FlowField {
         this.ctx = Sketch.create(options);
 
         this.ctx.resize = this.resize.bind(this);
-        this.ctx.touchstart = this.touchstart.bind(this);
         this.ctx.mousemove = this.mousemove.bind(this);
         this.ctx.update = this.update.bind(this);
         this.ctx.draw = this.draw.bind(this);
@@ -351,16 +349,6 @@ export default class FlowField {
         this.divergence = new Float32Array(numCells);
         this.pressure = new Float32Array(numCells);
     };
-
-    touchstart = (event) => {
-        // super jank way to prevent scrolling in mobile but keep all the clickables clickable
-        let classList = event.target.classList;
-        if (isTouch && event.target.tagName.toLowerCase() !== 'a' &&
-                !classList.contains('sketch-left') &&
-                !classList.contains('sketch-right')) {
-            event.preventDefault();
-        }
-    }
 
     mousemove = () => {
         let mouse = this.ctx.mouse;
