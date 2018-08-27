@@ -13,6 +13,7 @@ uniform float time;
 uniform float noiseAmp;
 uniform float noiseFreq;
 uniform float noiseEvo;
+uniform float fade;
 
 float fractalNoise(vec3 pos) {
     vec3 sample = vec3(pos.x * noiseFreq, pos.z * noiseFreq, time * noiseEvo);
@@ -50,6 +51,9 @@ void main() {
 
     float gray = clamp(dot(normal, lightDir) * 0.2 + fresnel * 0.3, 0.0, 1.0);
     vec3 color = vec3(gray, gray, pow(gray, 0.86));
+
+    vec3 baseColor = vec3(0.4, 0.4, 0.45);
+    color = mix(baseColor, color, fade);
 
     float fog = max(smoothstep(2.0, 0.3, depth), smoothstep(2.0, 6.0, depth));
     vec3 fogColor = vec3(1.0);

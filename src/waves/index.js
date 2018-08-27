@@ -16,7 +16,10 @@ export default class Waves {
 
         this.renderer = new THREE.WebGLRenderer({
             antialias: true,
+            alpha: true,
         });
+        this.renderer.autoClear = true;
+        this.renderer.setClearColor(0xffffff, 0);
 
         this.ctx = Sketch.create(Object.assign(options, {
             type: 'webgl',
@@ -57,7 +60,7 @@ export default class Waves {
         this.targetElevation = this.elevation = 15 / 180 * PI;
 
         this.scene = new THREE.Scene();
-        this.scene.background = new THREE.Color(0.99, 0.99, 0.99);
+        this.scene.background = new THREE.Color(1.0, 1.0, 1.0);
 
         this.cameraPivot = new THREE.Object3D();
         this.cameraPivot.position.y = -0.3;
@@ -77,6 +80,7 @@ export default class Waves {
             noiseAmp: { value: 0.5 },
             noiseFreq: { value: 0.3 },
             noiseEvo: { value: 0.04 },
+            fade: { value: 0.0 },
         };
 
         let lowQMat = this.lowQMat = new THREE.RawShaderMaterial({
@@ -116,6 +120,9 @@ export default class Waves {
     update = () => {
         this.azimuth = lerp(this.azimuth, this.targetAzimuth, 1 * this.ctx.dt / 1000);
         this.elevation = lerp(this.elevation, this.targetElevation, 1 * this.ctx.dt / 1000);
+        if (!this.lowQMode) {
+            this.fade = min(1.0, this.fade + 0.2 * this.ctx.dt / 1000);
+        }
     }
 
     draw = () => {
@@ -124,29 +131,25 @@ export default class Waves {
         this.now = now;
         this.dt = lerp((this.dt || 1000), dt, 0.1);
 
-        let upperThreshold = 60;
-        let threshold = 20;
+        let upperThreshold = 100;
+        let threshold = 17;
         if (this.lowQMode) {
             if (this.dt < threshold) {
                 console.log('switching to high q');
                 this.waveMesh.material = this.highQMat;
                 this.lowQMode = false;
-            }
-        } else {
-            if (this.dt > upperThreshold) {
-                console.log('switching to low q');
-                this.waveMesh.material = this.lowQMat;
-                this.lowQMode = true;
+                this.fade = 0.0;
             }
         }
 
-
         let time = this.ctx.millis / 1000;
         this.waveMesh.material.uniforms.time.value = time;
+        if (!this.lowQMode) {
+            this.waveMesh.material.uniforms.fade.value = this.fade;
+        }
 
         this.cameraPivot.rotation.x = this.elevation;
         this.cameraPivot.rotation.y = this.azimuth;
-
 
         this.renderer.render( this.scene, this.camera );
     };

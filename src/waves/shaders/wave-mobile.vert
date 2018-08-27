@@ -23,7 +23,6 @@ uniform float noiseAmp;
 uniform float noiseFreq;
 uniform float noiseEvo;
 
-varying vec4 worldPosition;
 varying vec4 viewPosition;
 
 float fractalNoise(vec3 pos) {
@@ -42,7 +41,7 @@ float fractalNoise(vec3 pos) {
 }
 
 void main() {
-    worldPosition = modelMatrix * vec4(position, 1.0);
+    vec4 worldPosition = modelMatrix * vec4(position, 1.0);
 
     float sample = fractalNoise(worldPosition.xyz);
     vec3 offset = vec3(0.0, sample, 0.0);

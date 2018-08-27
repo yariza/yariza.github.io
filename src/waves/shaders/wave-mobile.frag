@@ -1,33 +1,17 @@
-precision highp float;
+precision mediump float;
 precision lowp int;
 
 #pragma glslify: snoise = require(./noise3D)
 
-uniform mat4 viewMatrix;
-uniform vec3 cameraPosition;
+uniform highp mat4 viewMatrix;
+uniform highp vec3 cameraPosition;
 
-varying vec4 worldPosition;
 varying vec4 viewPosition;
 
-uniform float time;
-uniform float noiseAmp;
-uniform float noiseFreq;
-uniform float noiseEvo;
-
-float fractalNoise(vec3 pos) {
-    vec3 sample = vec3(pos.x * noiseFreq, pos.z * noiseFreq, time * noiseEvo);
-
-    float amp = noiseAmp;
-    float value = 0.0;
-
-    #pragma unroll_loop
-    for ( int i = 0; i < 2; i ++ ) {
-        amp *= 0.48;
-        value += snoise(sample) * amp;
-        sample *= 2.0;
-    }
-    return value;
-}
+uniform highp float time;
+uniform highp float noiseAmp;
+uniform highp float noiseFreq;
+uniform highp float noiseEvo;
 
 void main() {
     vec3 viewPos = viewPosition.xyz;
