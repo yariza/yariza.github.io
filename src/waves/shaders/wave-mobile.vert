@@ -1,5 +1,5 @@
-precision mediump float;
-precision mediump int;
+precision highp float;
+precision lowp int;
 
 #pragma glslify: snoise = require(./noise3D)
 

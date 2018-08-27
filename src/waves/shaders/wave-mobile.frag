@@ -1,5 +1,5 @@
-precision mediump float;
-precision mediump int;
+precision highp float;
+precision lowp int;
 
 #pragma glslify: snoise = require(./noise3D)
 
@@ -33,7 +33,6 @@ void main() {
     vec3 viewPos = viewPosition.xyz;
     float depth = length(viewPos);
 
-    vec3 lightDir = normalize(vec3(0.0, 1.0, 1.0));
     vec3 color = vec3(0.4, 0.4, 0.45);
 
     float fog = max(smoothstep(2.0, 0.3, depth), smoothstep(2.0, 6.0, depth));
