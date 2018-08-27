@@ -124,7 +124,7 @@ export default class Waves {
         this.now = now;
         this.dt = lerp((this.dt || 1000), dt, 0.1);
 
-        let upperThreshold = 40;
+        let upperThreshold = 60;
         let threshold = 20;
         if (this.lowQMode) {
             if (this.dt < threshold) {
