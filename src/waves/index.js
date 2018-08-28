@@ -22,6 +22,7 @@ export default class Waves {
 
         this.ctx = Sketch.create(Object.assign(options, {
             type: 'webgl',
+            retina: false,
             element: this.renderer.domElement,
             context: this.renderer.context
         }));
