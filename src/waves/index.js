@@ -15,7 +15,6 @@ export default class Waves {
     constructor(options) {
 
         this.renderer = new THREE.WebGLRenderer({
-            antialias: true,
             alpha: true,
         });
         this.renderer.autoClear = true;
