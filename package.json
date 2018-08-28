@@ -28,7 +28,6 @@
   "dependencies": {
     "glsl-noise": "^0.0.0",
     "simplex-noise": "^2.4.0",
-    "three": "^0.95.0",
-    "three-orbit-controls": "^82.1.0"
+    "three": "^0.95.0"
   }
 }
