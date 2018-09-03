@@ -33,6 +33,10 @@ export default class FlowField {
         return 'flow-field';
     }
 
+    static supportsAudio = () => {
+        return false;
+    }
+
     bressenhamLine = (inx0, iny0, inx1, iny1, callback) => {
         let x0 = floor(inx0);
         let y0 = floor(iny0);

@@ -35,3 +35,21 @@
     margin-right: 10px;
     min-width: 100px;
 }
+
+.sketch-mute {
+    text-align: right;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 1.2rem;
+    font-family: monospace;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.sketch-mute-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+}

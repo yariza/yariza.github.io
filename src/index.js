@@ -11,6 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let curSketch = null;
     let curIndex = 0;
+    let mute = true;
+    let clicked = false;
 
     let checkHash = (hash) => {
         for (let i = 0; i < sketches.length; i++) {
@@ -18,6 +20,29 @@ document.addEventListener("DOMContentLoaded", () => {
                 curIndex = i;
                 return;
             }
+        }
+    }
+
+    let setMute = (newMute) => {
+        mute = newMute;
+        let element = document.getElementsByClassName('sketch-mute-button')[0];
+        if (mute) {
+            element.classList.toggle('fa-volume-up', false);
+            element.classList.toggle('fa-volume-off', true);
+        }
+        else {
+            element.classList.toggle('fa-volume-up', true);
+            element.classList.toggle('fa-volume-off', false);
+        }
+    }
+
+    let toggleMute = () => {
+        setMute(!mute);
+        if (mute) {
+            curSketch.mute();
+        }
+        else {
+            curSketch.unmute();
         }
     }
 
@@ -29,23 +54,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (newIndex !== curIndex) {
             curIndex = newIndex;
-            setupSketch();
-            window.location.hash = '#' + sketches[curIndex].getName();
+
+            let curLocation = window.location;
+            window.location.assign(curLocation.origin + curLocation.pathname + '#' + sketches[curIndex].getName());
+            window.location.reload(true);
+            return;
         }
+        clicked = false;
+        setMute(true);
         document.getElementsByClassName('sketch-left')[0].classList.toggle('disabled', curIndex === 0);
         document.getElementsByClassName('sketch-right')[0].classList.toggle('disabled', curIndex === sketches.length - 1);
     }
 
     let setupSketch = () => {
-        if (curSketch) {
-            curSketch.ctx.destroy();
-            for (let prop in curSketch) {
-                if (curSketch.hasOwnProperty(prop)) {
-                    delete curSketch[prop];
-                }
-            }
-        }
-
         curSketch = new sketches[curIndex]({
             eventTarget: document.body,
             container: document.body,
@@ -65,6 +86,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 event.preventDefault();
             }
         }
+
+        document.getElementsByClassName('sketch-mute')[0].style.display = sketches[curIndex].supportsAudio() ? 'block' : 'none';
 
         document.getElementsByClassName('sketch-title')[0].textContent = sketches[curIndex].getName();
 
@@ -91,6 +114,12 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (keyName === 'ArrowRight') {
             navigate(1);
         }
+
+        if (sketches[curIndex].supportsAudio() && clicked) {
+            if (keyName === 'm') {
+                toggleMute();
+            }
+        }
     });
 
     document.addEventListener('click', (event) => {
@@ -103,6 +132,16 @@ document.addEventListener("DOMContentLoaded", () => {
             navigate(1);
             event.preventDefault();
             event.stopPropagation();
+        }
+
+        if (clicked) {
+            if (event.target.classList.contains('sketch-mute-button')) {
+                toggleMute();
+            }
+        }
+        else {
+            clicked = true;
+            setMute(false);
         }
     });
 });

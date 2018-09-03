@@ -4,11 +4,18 @@ import waveVert from './shaders/wave.vert';
 import waveFrag from './shaders/wave.frag';
 import waveVertLowQ from './shaders/wave-mobile.vert';
 import waveFragLowQ from './shaders/wave-mobile.frag';
+import Gibberish from 'gibberish-dsp';
+
+window.Gibberish = Gibberish;
 
 export default class Waves {
 
     static getName = () => {
         return 'waves';
+    }
+
+    static supportsAudio = () => {
+        return true;
     }
 
     constructor(options) {
@@ -32,6 +39,94 @@ export default class Waves {
         this.ctx.draw = this.draw.bind(this);
         this.ctx.mousemove = this.mousemove.bind(this);
         this.ctx.update = this.update.bind(this);
+        
+        Gibberish.init();
+        Gibberish.onstart = this.audioSetup.bind(this);
+    }
+
+    audioSetup = () => {
+        this.audioStarted = true;
+
+        let out = new Gibberish.Bus2();
+        
+        this.gain = new Gibberish.Line(0, 1, 5 * Gibberish.context.sampleRate);
+        out.amp = this.gain;
+
+        let noise = new Gibberish.Noise();
+        let lowNoise = Gibberish.Binops.Mul(new Gibberish.Biquad({input: noise, cutoff:0.03, Q:4, mode:"LP"}), 60);
+        let lowNoise2 = Gibberish.Binops.Mul(new Gibberish.Biquad({ input: noise, cutoff: 0.2, Q: 4, mode:"LP"}), 50);
+        let lowNoise3 = Gibberish.Binops.Mul(new Gibberish.Biquad({ input: noise, cutoff: 0.3, Q:4, mode:"LP"}), 50);
+
+        this.lowCut = new Gibberish.OnePole({
+            input: 40,
+            a0:.0001,
+            b1:.9999
+        });
+
+        noise = new Gibberish.SVF({
+            input: noise,
+            cutoff: Gibberish.Binops.Map(
+                Gibberish.Binops.Pow(
+                    Gibberish.Binops.Map(
+                        lowNoise2,
+                        0, 1,
+                        -1, 1
+                    ),
+                    1.2
+                ),
+                // 40,
+                // 2000,
+                this.lowCut,
+                this.lowCut,
+                -1,
+                1
+            ),
+            Q: Gibberish.Binops.Map(
+                Gibberish.Binops.Pow(
+                    Gibberish.Binops.Map(
+                        lowNoise3,
+                        0, 1,
+                        -1, 1
+                    ),
+                    1.2
+                ),
+                0.3,
+                10,
+                0,
+                1
+            ),
+            mode: 0,
+        });
+
+        noise = Gibberish.Binops.Mul(noise,
+            Gibberish.Binops.Add(
+                Gibberish.Binops.Abs(
+                    lowNoise
+                ),
+                0.5
+            ),
+            1
+        );
+
+        noise = new Gibberish.Reverb({
+            input: noise,
+            roomSize:1,
+            wet:1.0,
+            dry: 0.25
+        });
+        
+        noise.connect(out);
+        out.connect();
+    }
+
+    mute = () => {
+        console.log('muting');
+        this.gain.retrigger(0, 0.3 * Gibberish.context.sampleRate);
+    }
+
+    unmute = () => {
+        console.log('unmuting');
+        this.gain.retrigger(1, 0.3 * Gibberish.context.sampleRate);
     }
 
     setup = () => {

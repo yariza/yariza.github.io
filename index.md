@@ -17,3 +17,7 @@ I am a creative coder and developer working in AR/VR and audiovisual experiences
         >
     </span>
 </div>
+
+<div class='sketch-mute'>
+    <i class="sketch-mute-button fa fa-volume-off"></i>
+</div>
