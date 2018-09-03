@@ -123,10 +123,10 @@ export default class Waves {
 
         out = new Gibberish.Reverb({
             input: out,
-            roomSize: 0.95,
-            damping: .4,
-            wet: 0.55,
-            dry: 0.10
+            roomSize: 0.96,
+            damping: .01,
+            wet: 0.50,
+            dry: 0.05
         });
         
         out.connect();
