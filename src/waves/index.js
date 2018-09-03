@@ -53,15 +53,38 @@ export default class Waves {
         out.amp = this.gain;
 
         let noise = new Gibberish.Noise();
-        let lowNoise = Gibberish.Binops.Mul(new Gibberish.Biquad({input: noise, cutoff:0.03, Q:4, mode:"LP"}), 60);
-        let lowNoise2 = Gibberish.Binops.Mul(new Gibberish.Biquad({ input: noise, cutoff: 0.2, Q: 4, mode:"LP"}), 50);
-        let lowNoise3 = Gibberish.Binops.Mul(new Gibberish.Biquad({ input: noise, cutoff: 0.3, Q:4, mode:"LP"}), 50);
+        let lowNoise = Gibberish.Binops.Mul(new Gibberish.Biquad({input: noise, cutoff:0.1, Q:4, mode:"LP"}), 50);
+        let lowNoise2 = Gibberish.Binops.Mul(new Gibberish.Biquad({ input: noise, cutoff: 0.4, Q: 4, mode:"LP"}), 50);
 
-        this.lowCut = new Gibberish.OnePole({
-            input: 40,
-            a0:.0001,
-            b1:.9999
+        this.yControl = new Gibberish.OnePole({
+            input: 0.5,
+            a0: .00005,
+            b1: .99995,
         });
+
+        this.resonance = new Gibberish.OnePole({
+            input: 0.3,
+            a0: .00005,
+            b1: .99995,
+        });
+
+        let lowCut = Gibberish.Binops.Map(
+            Gibberish.Binops.Pow(
+                this.yControl,
+                1.2
+            ),
+            20, 200,
+            0, 1
+        );
+
+        let amp = Gibberish.Binops.Map(
+            Gibberish.Binops.Pow(
+                this.yControl,
+                0.05
+            ),
+            40.0, 1.0,
+            0, 1
+        );
 
         noise = new Gibberish.SVF({
             input: noise,
@@ -70,63 +93,53 @@ export default class Waves {
                     Gibberish.Binops.Map(
                         lowNoise2,
                         0, 1,
-                        -1, 1
+                        -0.5, 0.5
                     ),
                     1.2
                 ),
-                // 40,
-                // 2000,
-                this.lowCut,
-                this.lowCut,
+                lowCut,
+                Gibberish.Binops.Mul(lowCut, 2.0),
                 -1,
                 1
             ),
-            Q: Gibberish.Binops.Map(
-                Gibberish.Binops.Pow(
-                    Gibberish.Binops.Map(
-                        lowNoise3,
-                        0, 1,
-                        -1, 1
-                    ),
-                    1.2
-                ),
+            Q: Gibberish.Binops.Clamp(
+                this.resonance,
                 0.3,
-                10,
-                0,
-                1
+                4.5
             ),
             mode: 0,
         });
 
         noise = Gibberish.Binops.Mul(noise,
-            Gibberish.Binops.Add(
-                Gibberish.Binops.Abs(
-                    lowNoise
-                ),
-                0.5
+            Gibberish.Binops.Map(
+                lowNoise,
+                1.0, 5.0,
+                -1.0, 1.0
             ),
-            1
+            amp
         );
 
-        noise = new Gibberish.Reverb({
-            input: noise,
-            roomSize:1,
-            wet:1.0,
-            dry: 0.25
+        noise.connect(out);
+
+        out = new Gibberish.Reverb({
+            input: out,
+            roomSize: 0.95,
+            damping: .4,
+            wet: 0.55,
+            dry: 0.10
         });
         
-        noise.connect(out);
         out.connect();
     }
 
     mute = () => {
-        console.log('muting');
-        this.gain.retrigger(0, 0.3 * Gibberish.context.sampleRate);
+        // console.log('muting');
+        this.gain.retrigger(0, 0.03 * Gibberish.context.sampleRate);
     }
 
     unmute = () => {
-        console.log('unmuting');
-        this.gain.retrigger(1, 0.3 * Gibberish.context.sampleRate);
+        // console.log('unmuting');
+        this.gain.retrigger(1, 0.03 * Gibberish.context.sampleRate);
     }
 
     setup = () => {
@@ -183,6 +196,21 @@ export default class Waves {
         let elevation = lerp(-7, -12, relY);
         this.targetAzimuth = azimuth / 180 * PI;
         this.targetElevation = elevation / 180 * PI;
+
+        if (this.yControl) {
+            this.yControl.input = relY;
+            // console.log('y', relY);
+        }
+        if (this.resonance) {
+            let speed = sqrt(this.ctx.mouse.dx * this.ctx.mouse.dx +
+                             this.ctx.mouse.dy * this.ctx.mouse.dy);
+            speed = min(speed, 100);
+            speed = map(speed, 0, 100, 0, 1);
+            speed = pow(speed, 3.0);
+            let q = map(speed, 0, 1, 0.3, 10);
+            // console.log('q', q);
+            this.resonance.input = q;
+        }
     }
 
     resize = () => {
