@@ -22,7 +22,7 @@ uniform float time;
 uniform float noiseAmp;
 uniform float noiseFreq;
 uniform float noiseEvo;
-uniform float fade;
+uniform float hqFade;
 
 varying vec4 worldPosition;
 varying vec4 viewPosition;
@@ -66,7 +66,7 @@ void main() {
 
     float mobile;
     float sample = fractalNoise(worldPosition.xyz, mobile);
-    vec3 offset = vec3(0.0, mix(mobile, sample, fade), 0.0);
+    vec3 offset = vec3(0.0, mix(mobile, sample, hqFade), 0.0);
 
     vec4 viewPos = viewMatrix * vec4(worldPosition.xyz + offset, 1.0);
     viewPosition = viewPos.xzyw; // axes shuffling to match z depth

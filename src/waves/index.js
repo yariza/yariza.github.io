@@ -162,11 +162,14 @@ export default class Waves {
 
         let waveGeo = new THREE.PlaneBufferGeometry(10, 10, 100, 100);
 
+        this.fade = 0.0;
+
         let uniforms = {
             time: { value: 0.5 },
             noiseAmp: { value: 0.5 },
             noiseFreq: { value: 0.3 },
             noiseEvo: { value: 0.04 },
+            hqFade: { value: 0.0 },
             fade: { value: 0.0 },
         };
 
@@ -223,8 +226,9 @@ export default class Waves {
         this.azimuth = lerp(this.azimuth, this.targetAzimuth, 1 * this.ctx.dt / 1000);
         this.elevation = lerp(this.elevation, this.targetElevation, 1 * this.ctx.dt / 1000);
         if (!this.lowQMode) {
-            this.fade = min(1.0, this.fade + 0.2 * this.ctx.dt / 1000);
+            this.hqFade = min(1.0, this.hqFade + 0.2 * this.ctx.dt / 1000);
         }
+        this.fade = min(1.0, this.fade + 0.3 * this.ctx.dt / 1000)
     }
 
     draw = () => {
@@ -240,15 +244,16 @@ export default class Waves {
                 console.log('switching to high q');
                 this.waveMesh.material = this.highQMat;
                 this.lowQMode = false;
-                this.fade = 0.0;
+                this.hqFade = 0.0;
             }
         }
 
         let time = this.ctx.millis / 1000;
         this.waveMesh.material.uniforms.time.value = time;
         if (!this.lowQMode) {
-            this.waveMesh.material.uniforms.fade.value = this.fade;
+            this.waveMesh.material.uniforms.hqFade.value = this.hqFade;
         }
+        this.waveMesh.material.uniforms.fade.value = this.fade * this.fade;
 
         this.cameraPivot.rotation.x = this.elevation;
         this.cameraPivot.rotation.y = this.azimuth;
