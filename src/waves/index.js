@@ -223,12 +223,16 @@ export default class Waves {
     }
 
     update = () => {
-        this.azimuth = lerp(this.azimuth, this.targetAzimuth, 1 * this.ctx.dt / 1000);
-        this.elevation = lerp(this.elevation, this.targetElevation, 1 * this.ctx.dt / 1000);
-        if (!this.lowQMode) {
-            this.hqFade = min(1.0, this.hqFade + 0.2 * this.ctx.dt / 1000);
+        let dt = this.ctx.dt / 1000;
+        if (dt > 0.2) {
+            dt = 0.02;
         }
-        this.fade = min(1.0, this.fade + 0.3 * this.ctx.dt / 1000)
+        this.azimuth = lerp(this.azimuth, this.targetAzimuth, 1 * dt);
+        this.elevation = lerp(this.elevation, this.targetElevation, 1 * dt);
+        if (!this.lowQMode) {
+            this.hqFade = min(1.0, this.hqFade + 0.2 * dt);
+        }
+        this.fade = min(1.0, this.fade + 0.3 * dt)
     }
 
     draw = () => {
