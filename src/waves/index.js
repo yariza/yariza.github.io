@@ -10,11 +10,11 @@ window.Gibberish = Gibberish;
 
 export default class Waves {
 
-    static getName = () => {
+    getName = () => {
         return 'waves';
     }
 
-    static supportsAudio = () => {
+    supportsAudio = () => {
         return true;
     }
 

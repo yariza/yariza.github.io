@@ -29,11 +29,11 @@ export default class FlowField {
         this.ctx.draw = this.draw.bind(this);
     }
 
-    static getName = () => {
+    getName = () => {
         return 'flow-field';
     }
 
-    static supportsAudio = () => {
+    supportsAudio = () => {
         return false;
     }
 

@@ -1,27 +1,37 @@
-import FlowField from './flow-field';
-import Waves from './waves';
 import { isTouch } from './utils';
 
-document.addEventListener("DOMContentLoaded", () => {
+let sketches = [
+    {
+        name: 'waves',
+        sketch: () => import(/* webpackChunkName: 'waves' */ './waves'),
+    },
+    {
+        name: 'flow-field',
+        sketch: () => import(/* webpackChunkName: 'flow-field' */ './flow-field'),
+    }
+];
 
-    let sketches = [
-        Waves,
-        FlowField,
-    ];
+let curSketch = null;
+let curIndex = 0;
+let mute = true;
+let clicked = false;
 
-    let curSketch = null;
-    let curIndex = 0;
-    let mute = true;
-    let clicked = false;
-
-    let checkHash = (hash) => {
-        for (let i = 0; i < sketches.length; i++) {
-            if (sketches[i].getName() === hash) {
-                curIndex = i;
-                return;
-            }
+if (window.location.hash) {
+    let hash = window.location.hash.slice(1);
+    for (let i = 0; i < sketches.length; i++) {
+        if (sketches[i].name === hash) {
+            curIndex = i;
+            break;
         }
     }
+}
+
+Promise.all([
+    sketches[curIndex].sketch(),
+    new Promise((resolve, reject) => { document.addEventListener("DOMContentLoaded", resolve); }),
+]).then((results) => {
+
+    let sketchConstr = results[0].default;
 
     let setMute = (newMute) => {
         mute = newMute;
@@ -56,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
             curIndex = newIndex;
 
             let curLocation = window.location;
-            window.location.assign(curLocation.origin + curLocation.pathname + '#' + sketches[curIndex].getName());
+            window.location.assign(curLocation.origin + curLocation.pathname + '#' + sketches[curIndex].name);
             window.location.reload(true);
             return;
         }
@@ -67,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     let setupSketch = () => {
-        curSketch = new sketches[curIndex]({
+        curSketch = new sketchConstr({
             eventTarget: document.body,
             container: document.body,
             retina: 'auto'
@@ -81,15 +91,15 @@ document.addEventListener("DOMContentLoaded", () => {
             // super jank way to prevent scrolling in mobile but keep all the clickables clickable
             let classList = event.target.classList;
             if (isTouch && event.target.tagName.toLowerCase() !== 'a' &&
-                    !classList.contains('sketch-left') &&
-                    !classList.contains('sketch-right')) {
+                !classList.contains('sketch-left') &&
+                !classList.contains('sketch-right')) {
                 event.preventDefault();
             }
         }
 
-        document.getElementsByClassName('sketch-mute')[0].style.display = sketches[curIndex].supportsAudio() ? 'block' : 'none';
+        document.getElementsByClassName('sketch-mute')[0].style.display = curSketch.supportsAudio() ? 'block' : 'none';
 
-        document.getElementsByClassName('sketch-title')[0].textContent = sketches[curIndex].getName();
+        document.getElementsByClassName('sketch-title')[0].textContent = curSketch.getName();
 
         let style = curSketch.ctx.element.style;
         style.position = 'absolute';
@@ -98,13 +108,9 @@ document.addEventListener("DOMContentLoaded", () => {
         style.zIndex = '-1';
     };
 
-    if (window.location.hash) {
-        checkHash(window.location.hash.slice(1));
-    }
-
     navigate(0);
     setupSketch();
-    
+
     document.addEventListener('keydown', (event) => {
         const keyName = event.key;
         let newIndex = curIndex;
@@ -115,7 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
             navigate(1);
         }
 
-        if (sketches[curIndex].supportsAudio() && clicked) {
+        if (curSketch.supportsAudio() && clicked) {
             if (keyName === 'm') {
                 toggleMute();
             }
@@ -144,5 +150,5 @@ document.addEventListener("DOMContentLoaded", () => {
             setMute(false);
         }
     });
-});
 
+})

@@ -5,6 +5,7 @@ module.exports = {
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, './js'),
+        publicPath: '/js/',
         filename: 'bundle.js',
     },
     module: {
@@ -16,7 +17,10 @@ module.exports = {
                     loader: 'babel-loader',
                     options: {
                         presets: ['es2015'],
-                        plugins: ['transform-class-properties'],
+                        plugins: [
+                            'transform-class-properties',
+                            'syntax-dynamic-import',
+                        ],
                     }
                 }
             },
@@ -35,5 +39,10 @@ module.exports = {
                 }
             }
         ]
+    },
+    optimization: {
+        splitChunks: {
+            chunks: 'initial',
+        }
     }
 };
