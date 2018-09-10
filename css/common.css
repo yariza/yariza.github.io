@@ -67,6 +67,7 @@ article {
 .site .header {
     margin-bottom: 40px;
     display: inline-block;
+    position: relative;
 }
 
 @media (max-width: 850px) {
@@ -141,6 +142,31 @@ article {
 
 .site .header a.extra:hover {
     color: #000;
+}
+
+.dark-mode {
+    text-align: right;
+    /* position: absolute; */
+    /* top: 0; */
+    /* right: 0; */
+    font-size: 1.2rem;
+    font-family: monospace;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+@media (max-width: 850px) {
+    .dark-mode {
+        /* left: 0; */
+        /* right: auto; */
+    }
+}
+
+.dark-mode-button {
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 .site .meta {
