@@ -5,7 +5,8 @@ var randomtext = [
 	'CMU student',
 	'creative coder',
 	'musician',
-	'dreamer'
+	'dreamer',
+	':D))'
 ];
 
 var current_nav = '';
@@ -98,5 +99,6 @@ document.addEventListener("DOMContentLoaded", function() {
 		}
 	});
 
+	
 });
 

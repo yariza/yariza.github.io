@@ -65,21 +65,28 @@ article {
 }
 
 .site .header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     margin-bottom: 40px;
-    display: inline-block;
     position: relative;
+    align-items: baseline;
+    justify-content: flex-start;
 }
 
 @media (max-width: 850px) {
     .site .header {
         width: 100%;
         padding-right: 1em;
-        text-align: right;
+        justify-content: flex-end;
     }
 }
 
 .site .header a {
+    text-align: center;
+    text-decoration: none;
     white-space: nowrap;
+
     font-weight: 300;
     font-size: 1.2em;
     text-decoration: none;
@@ -92,16 +99,16 @@ article {
 }
 
 .site .header .title {
-    margin-bottom: 40px;
     font-weight: 300;
     font-size: 2.3em;
-    display: inline-block;
     text-align: right;
+    margin-bottom: 40px;
 }
 
 @media (max-width: 850px) {
     .site .header .title {
-        display: block;
+        /* page-break-after: always; */
+        break-after: page;
     }
 }
 .site .header .title a {
@@ -144,29 +151,26 @@ article {
     color: #000;
 }
 
-.dark-mode {
+.site .header .dark-mode {
+    margin-top: 10px;
+    margin-left: auto;
+    color: #555;
     text-align: right;
-    /* position: absolute; */
-    /* top: 0; */
-    /* right: 0; */
-    font-size: 1.2rem;
-    font-family: monospace;
-    width: 20px;
-    height: 20px;
+    font-size: 0.8rem;
+    font-weight: 400;
     cursor: pointer;
 }
 
-@media (max-width: 850px) {
-    .dark-mode {
-        /* left: 0; */
-        /* right: auto; */
-    }
+.site .header > br {
+    display: none;
 }
 
-.dark-mode-button {
-    position: absolute;
-    top: 0;
-    right: 0;
+@media (max-width: 850px) {
+    .site .header > br {
+        width: 100%;
+        display: block;
+        content: '';
+    }
 }
 
 .site .meta {
