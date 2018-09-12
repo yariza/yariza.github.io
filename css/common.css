@@ -10,8 +10,18 @@ html, body { height: 100%; }
 
 body {
     background-color: #FFF;
+    color: #000;
     font: 1.0em 'Source Sans Pro', sans-serif;
     text-align: center;
+}
+
+body.fade {
+    transition: color 0.5s ease-out, background-color 0.5s ease-out, border-color 0.5s ease-out;
+}
+
+body#dark {
+    background-color: #0e0e0e;
+    color: #CCC;
 }
 
 h1 {
@@ -32,8 +42,16 @@ a {
     color: #8085C1;
 }
 
+#dark a {
+    color: #8085C1;
+}
+
 a:hover {
-    color: #2C2F31;
+    color: #A3A9EC;
+}
+
+#dark a:hover {
+    color: #809cc1;
 }
 
 article {
@@ -115,8 +133,18 @@ article {
     color: #555;
 }
 
-.site .header .title a:hover {
+#dark .site .header .title a {
+    color: #999;
+}
+
+.site .header .title a:hover,
+.site .header .title a.active {
     color: #000;
+}
+
+#dark .site .header .title a:hover,
+#dark .site .header .title a.active {
+    color: #CCC;
 }
 
 @media (max-width: 850px) {
@@ -142,13 +170,27 @@ article {
     pointer-events: none;
 }
 
+#dark .site .header .title .subhead {
+    color: #999;
+}
+
 .site .header a.extra {
     color: #999;
     margin-left: 1em;
 }
 
-.site .header a.extra:hover {
+#dark .site .header a.extra {
+    color: #777;
+}
+
+.site .header a.extra:hover,
+.site .header a.extra.active {
     color: #000;
+}
+
+#dark .site .header a.extra:hover,
+#dark .site .header a.extra.active {
+    color: #CCC;
 }
 
 .site .header .dark-mode {
@@ -159,6 +201,10 @@ article {
     font-size: 0.8rem;
     font-weight: 400;
     cursor: pointer;
+}
+
+#dark .site .header .dark-mode {
+    color: #CCC;
 }
 
 .site .header > br {
@@ -177,6 +223,10 @@ article {
     color: #999;
 }
 
+#dark .site .meta {
+    color: #777;
+}
+
 .site .meta + .meta {
     margin-top: -1.0em;
 }
@@ -187,10 +237,17 @@ article {
 }
 
 .site .footer {
-    color: #666;
-    border-top: 4px solid #ccc;
-    margin-top: 2em;
+    margin-top: 1em;
+    padding-top: 1em;
     overflow: hidden;
+    border-top-width: 4px;
+    border-top-style: solid;
+    border-top-color: #ddd;
+    transition: border-top-color 0.5s ease-out;
+}
+
+#dark .site .footer {
+    border-top-color: #333;
 }
 
 .site .footer .blurb {
@@ -198,6 +255,10 @@ article {
     font-weight: 300;
     color: #555;
     margin-top: 0.5em;
+}
+
+#dark .site .footer .blurb {
+    color: #CCC;
 }
 
 .site .footer .contact {
@@ -209,12 +270,12 @@ article {
     color: #000;
 }
 
-.site .footer .contact.links i {
-    margin-right: 0.2em;
+#dark .site .footer .contact.links {
+    color: #CCC;
 }
 
-.site .footer .contact a {
-    color: #8085C1;
+.site .footer .contact.links i {
+    margin-right: 0.2em;
 }
 
 .site .footer .rss {

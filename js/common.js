@@ -16,7 +16,9 @@ document.addEventListener("DOMContentLoaded", function() {
 	var prev_prev_random = -1;
 	var prev_random = -1;
 
-	$('#nav-'+current_nav).css('color', '#000');
+	if (current_nav === '') current_nav = 'home';
+
+	$('#nav-'+current_nav).addClass('active');
 	var subhead = $('.subhead');
 	var text = "";
 	if (current_nav == 'violin')
@@ -48,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		else if (id == 'nav-about')
 			text = '¯\\_(ツ)_/¯';
 		else {
-			if (current_nav == '') {
+			if (current_nav == 'home') {
 				var new_random;
 				do {
 					new_random = Math.floor(Math.random()*randomtext.length);
@@ -99,6 +101,25 @@ document.addEventListener("DOMContentLoaded", function() {
 		}
 	});
 
-	
-});
 
+	var darkMode = localStorage.getItem('darkMode') || 'dark';
+	var darkModeButton = document.getElementsByClassName('dark-mode')[0];
+	document.body.id = (darkMode === 'dark') ? 'dark' : '';
+	darkModeButton.textContent = darkMode === 'dark' ? 'light mode' : 'dark mode';
+
+	setTimeout(function() {
+		document.body.classList.toggle('fade', true);
+	}, 0);
+
+	document.addEventListener('click', function(event) {
+
+		if (event.target.classList.contains('dark-mode')) {
+			darkMode = (darkMode === 'dark') ? 'light' : 'dark';
+			localStorage.setItem("darkMode", darkMode);
+			document.body.id = (darkMode === 'dark') ? 'dark' : '';
+			darkModeButton.textContent = darkMode === 'dark' ? 'light mode' : 'dark mode';
+
+			event.preventDefault();
+		}
+	});
+});

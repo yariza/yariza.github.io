@@ -5,10 +5,11 @@ import waveFrag from './shaders/wave.frag';
 import waveVertLowQ from './shaders/wave-mobile.vert';
 import waveFragLowQ from './shaders/wave-mobile.frag';
 import Gibberish from 'gibberish-dsp';
+import BaseSketch from '../basesketch';
 
 window.Gibberish = Gibberish;
 
-export default class Waves {
+export default class Waves extends BaseSketch {
 
     getName = () => {
         return 'waves';
@@ -19,6 +20,7 @@ export default class Waves {
     }
 
     constructor(options) {
+        super();
 
         this.renderer = new THREE.WebGLRenderer({
             // antialias: true,

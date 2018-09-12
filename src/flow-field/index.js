@@ -1,9 +1,11 @@
 import SimplexNoise from 'simplex-noise';
 import Sketch from '../sketch';
+import BaseSketch from '../basesketch';
 
-export default class FlowField {
+export default class FlowField extends BaseSketch {
 
     constructor(options) {
+        super();
         this.viscosity = 0.3;
 
         this.gridSize = 20;
@@ -13,6 +15,7 @@ export default class FlowField {
         this.noiseScale = 0.02;
         this.noiseFreq = 0.05;
         this.noiseEvolution = 0.2;
+        this.curDark = this.dark;
     
         this.gridDim = {
             x: 0,
@@ -35,6 +38,10 @@ export default class FlowField {
 
     supportsAudio = () => {
         return false;
+    }
+
+    setDarkMode = (dark) => {
+        this.dark = (dark === true) ? 1 : 0;
     }
 
     bressenhamLine = (inx0, iny0, inx1, iny1, callback) => {
@@ -391,11 +398,17 @@ export default class FlowField {
 
         // swap velocity buffers;
         this.swap = !this.swap;
+
+        this.curDark += (this.dark === 1 ? 1 : -1) * this.ctx.dt / 0.5 / 1000;
+        this.curDark = this.clamp(this.curDark, 0, 1);
     }
 
     draw = () => {
         this.ctx.lineWidth = 2.0;
-        let baseColor = 0.6;
+        
+        let bg = lerp(this.lightBG[0], this.darkBG[0], this.curDark);
+        let fg = lerp(0.4, 0.7, this.curDark);
+
         for (let j = 0; j < this.gridDim.y; j++)
         {
             let jNorm = j / (this.gridDim.y - 1);
@@ -419,7 +432,7 @@ export default class FlowField {
                 let scale = 1 - pow(1.5, -len / this.gridSize);
 
                 let color = alpha * scale;
-                let grayscale = floor(lerp(1.0, 0.4, color) * 255);
+                let grayscale = floor(lerp(bg, fg, color) * 255);
                 this.ctx.strokeStyle = 'rgb(' + grayscale + ', ' + grayscale + ', ' + grayscale + ')';
     
                 let constrainedLen = min(this.gridSize * 0.7, len / 2);

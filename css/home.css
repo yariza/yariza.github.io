@@ -29,6 +29,10 @@
     color: #ccc;
 }
 
+#dark .sketch-control .disabled {
+    color: #777;
+}
+
 .sketch-title {
     display: inline-block;
     margin-left: 10px;

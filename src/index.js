@@ -139,6 +139,9 @@ Promise.all([
             event.preventDefault();
             event.stopPropagation();
         }
+        else if (event.target.classList.contains('dark-mode')) {
+            curSketch.setDarkMode(document.body.id === 'dark');
+        }
 
         if (clicked) {
             if (event.target.classList.contains('sketch-mute-button')) {
