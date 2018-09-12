@@ -13,6 +13,7 @@ uniform highp float noiseAmp;
 uniform highp float noiseFreq;
 uniform highp float noiseEvo;
 uniform highp float fade;
+uniform vec4 bgColor;
 
 void main() {
     vec3 viewPos = viewPosition.xyz;
@@ -21,7 +22,7 @@ void main() {
     vec3 color = vec3(0.4, 0.4, 0.45);
 
     float fog = max(smoothstep(2.0, 0.3, depth), smoothstep(2.0, 6.0, depth));
-    vec3 fogColor = vec3(1.0);
+    vec3 fogColor = bgColor.rgb;
     color = mix(color, fogColor, 1.0 - ((1.0 - fog) * fade));
     gl_FragColor = vec4(color, 1.0);
 }

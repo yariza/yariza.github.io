@@ -11,7 +11,8 @@ export default class BaseSketch {
         return false;
     }
 
-    setDarkMode = () => {
+    setDarkMode = (dark) => {
+        this.dark = (dark === true) ? 1 : 0;
     }
 
     darkBG = "#0e0e0e".match(/[A-Za-z0-9]{2}/g).map(function(v) { return parseInt(v, 16) / 255 });

@@ -6,6 +6,7 @@ import waveVertLowQ from './shaders/wave-mobile.vert';
 import waveFragLowQ from './shaders/wave-mobile.frag';
 import Gibberish from 'gibberish-dsp';
 import BaseSketch from '../basesketch';
+import { clamp } from '../utils';
 
 window.Gibberish = Gibberish;
 
@@ -27,7 +28,8 @@ export default class Waves extends BaseSketch {
             alpha: true,
         });
         this.renderer.autoClear = true;
-        this.renderer.setClearColor(0xffffff, 0);
+        // this.renderer.setClearColor(0xffffff, 0);
+        this.curDark = this.dark;
 
         this.ctx = Sketch.create(Object.assign(options, {
             type: 'webgl',
@@ -173,6 +175,7 @@ export default class Waves extends BaseSketch {
             noiseEvo: { value: 0.04 },
             hqFade: { value: 0.0 },
             fade: { value: 0.0 },
+            bgColor: { value: this.lightBG.concat(this.curDark) },
         };
 
         let lowQMat = this.lowQMat = new THREE.RawShaderMaterial({
@@ -235,6 +238,9 @@ export default class Waves extends BaseSketch {
             this.hqFade = min(1.0, this.hqFade + 0.2 * dt);
         }
         this.fade = min(1.0, this.fade + 0.3 * dt)
+
+        this.curDark += (this.dark === 1 ? 1 : -1) * this.ctx.dt / 0.5 / 1000;
+        this.curDark = clamp(this.curDark, 0, 1);
     }
 
     draw = () => {
@@ -263,6 +269,17 @@ export default class Waves extends BaseSketch {
 
         this.cameraPivot.rotation.x = this.elevation;
         this.cameraPivot.rotation.y = this.azimuth;
+
+        let bg = [
+            lerp(this.lightBG[0], this.darkBG[0], this.curDark),
+            lerp(this.lightBG[1], this.darkBG[1], this.curDark),
+            lerp(this.lightBG[2], this.darkBG[2], this.curDark)
+        ];
+        this.waveMesh.material.uniforms.bgColor.value[0] = bg[0];
+        this.waveMesh.material.uniforms.bgColor.value[1] = bg[1];
+        this.waveMesh.material.uniforms.bgColor.value[2] = bg[2];
+        this.waveMesh.material.uniforms.bgColor.value[3] = this.curDark;
+        this.scene.background = new THREE.Color(bg[0], bg[1], bg[2]);
 
         this.renderer.render( this.scene, this.camera );
     };

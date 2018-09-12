@@ -40,10 +40,6 @@ export default class FlowField extends BaseSketch {
         return false;
     }
 
-    setDarkMode = (dark) => {
-        this.dark = (dark === true) ? 1 : 0;
-    }
-
     bressenhamLine = (inx0, iny0, inx1, iny1, callback) => {
         let x0 = floor(inx0);
         let y0 = floor(iny0);

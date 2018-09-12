@@ -16,6 +16,10 @@ function is_touch_device() {
 
 export const isTouch = is_touch_device();
 
+export const clamp = (val, mmin, mmax) => {
+    return Math.min(mmax, Math.max(mmin, val));
+}
+
 export const smoothdamp = (current, target, currentVelocity, smoothTime, maxSpeed, deltaTime) => {
     smoothTime = max (0.000, smoothTime);
     let num = 2 / smoothTime;

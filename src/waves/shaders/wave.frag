@@ -15,6 +15,7 @@ uniform float noiseFreq;
 uniform float noiseEvo;
 uniform float hqFade;
 uniform float fade;
+uniform vec4 bgColor;
 
 float fractalNoise(vec3 pos) {
     vec3 sample = vec3(pos.x * noiseFreq, pos.z * noiseFreq, time * noiseEvo);
@@ -24,6 +25,7 @@ float fractalNoise(vec3 pos) {
 
     #pragma unroll_loop
     for ( int i = 0; i < 8; i ++ ) {
+    // for ( int i = 0; i < 8; i ++ ) {
         amp *= 0.48;
         value += snoise(sample) * amp;
         sample *= 2.0;
@@ -44,20 +46,27 @@ vec3 getNormal(vec3 pos) {
 void main() {
     vec3 viewPos = viewPosition.xyz;
     float depth = length(viewPos);
+    vec3 viewDir = normalize(worldPosition.xyz - cameraPosition);
 
     vec3 normal = getNormal(worldPosition.xyz);
-    float fresnel = pow(1.0 - clamp(dot(normalize(cameraPosition - worldPosition.xyz), normal), 0.0, 1.0), 0.4);
+    float fresnel = pow(1.0 - clamp(dot(-viewDir, normal), 0.0, 1.0), 0.4);
 
     vec3 lightDir = normalize(vec3(0.0, 1.0, 1.0));
 
     float gray = clamp(dot(normal, lightDir) * 0.2 + fresnel * 0.3, 0.0, 1.0);
-    vec3 color = vec3(gray, gray, pow(gray, 0.86));
+    float refr = pow(clamp(dot(reflect(viewDir, normal), normalize(vec3(0.0, 1.0, 0.0))), 0.0, 1.0), 2.0);
+    gl_FragColor = vec4(abs(reflect(viewDir, normal)), 1.0);
+    return;
+
+    vec3 lightColor = vec3(gray, gray, pow(gray, 0.86));
+    vec3 darkColor = mix(vec3(0.0, 0.0, 0.0), vec3(0.5, 0.5, 1.0), refr);
+    vec3 color = mix(lightColor, darkColor, bgColor.a);
 
     vec3 baseColor = vec3(0.4, 0.4, 0.45);
     color = mix(baseColor, color, hqFade);
 
     float fog = max(smoothstep(2.0, 0.3, depth), smoothstep(2.0, 6.0, depth));
-    vec3 fogColor = vec3(1.0);
+    vec3 fogColor = bgColor.rgb;
     color = mix(color, fogColor, 1.0 - ((1.0 - fog) * fade));
     gl_FragColor = vec4(color, 1.0);
 }
