@@ -20,6 +20,10 @@ h1, h2, h3, h4, h5, h6 {
   color: #2D2D2D;
 }
 
+#dark h1, h2, h3, h4, h5, h6 {
+  color: #AAA;
+}
+
 .post h1, .post h2, .post h3, .post h4, .post h5, .post h6 {
   margin-bottom: 0.6em;
 }
@@ -55,9 +59,17 @@ blockquote p {
 }
 
 .post code {
-  border: 1px solid #ddd;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ddd;
   background-color: #eef;
   padding: 0 .2em;
+  transition: border-color 0.5s ease-out;
+}
+
+#dark .post code {
+  border-color: #666;
+  background-color: #445;
 }
 
 .post pre code {

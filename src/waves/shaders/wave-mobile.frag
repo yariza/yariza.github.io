@@ -19,7 +19,7 @@ void main() {
     vec3 viewPos = viewPosition.xyz;
     float depth = length(viewPos);
 
-    vec3 color = vec3(0.4, 0.4, 0.45);
+    vec3 color = mix(vec3(0.4, 0.4, 0.45), vec3(0.2, 0.2, 0.25), bgColor.a);
 
     float fog = max(smoothstep(2.0, 0.3, depth), smoothstep(2.0, 6.0, depth));
     vec3 fogColor = bgColor.rgb;

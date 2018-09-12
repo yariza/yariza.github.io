@@ -25,7 +25,6 @@ float fractalNoise(vec3 pos) {
 
     #pragma unroll_loop
     for ( int i = 0; i < 8; i ++ ) {
-    // for ( int i = 0; i < 8; i ++ ) {
         amp *= 0.48;
         value += snoise(sample) * amp;
         sample *= 2.0;
@@ -54,15 +53,13 @@ void main() {
     vec3 lightDir = normalize(vec3(0.0, 1.0, 1.0));
 
     float gray = clamp(dot(normal, lightDir) * 0.2 + fresnel * 0.3, 0.0, 1.0);
-    float refr = pow(clamp(dot(reflect(viewDir, normal), normalize(vec3(0.0, 1.0, 0.0))), 0.0, 1.0), 2.0);
-    gl_FragColor = vec4(abs(reflect(viewDir, normal)), 1.0);
-    return;
+    float refr = pow(clamp(dot(refract(viewDir, normal, 0.8), vec3(0, -0.0499376, -0.998752)), 0.0, 1.0), 20.0);
 
     vec3 lightColor = vec3(gray, gray, pow(gray, 0.86));
-    vec3 darkColor = mix(vec3(0.0, 0.0, 0.0), vec3(0.5, 0.5, 1.0), refr);
+    vec3 darkColor = mix(vec3(0.13, 0.13, 0.15), vec3(1.4, 1.4, 1.7), refr);
     vec3 color = mix(lightColor, darkColor, bgColor.a);
 
-    vec3 baseColor = vec3(0.4, 0.4, 0.45);
+    vec3 baseColor = mix(vec3(0.4, 0.4, 0.45), vec3(0.2, 0.2, 0.25), bgColor.a);
     color = mix(baseColor, color, hqFade);
 
     float fog = max(smoothstep(2.0, 0.3, depth), smoothstep(2.0, 6.0, depth));
