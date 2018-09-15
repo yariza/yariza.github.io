@@ -244,6 +244,12 @@ export default class Waves extends BaseSketch {
     }
 
     draw = () => {
+        if (this.stats)
+        {
+            this.stats.end();
+            this.stats.begin();
+        }
+
         let now = performance.now();
         let dt = now - (this.now || now);
         this.now = now;

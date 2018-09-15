@@ -33,6 +33,7 @@
     "gibberish-dsp": "gibber-cc/gibberish#9cc0a26",
     "glsl-noise": "^0.0.0",
     "simplex-noise": "^2.4.0",
+    "stats-js": "^1.0.0-alpha1",
     "three": "^0.95.0"
   }
 }

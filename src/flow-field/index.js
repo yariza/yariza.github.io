@@ -377,6 +377,11 @@ export default class FlowField extends BaseSketch {
     }
 
     update = () => {
+        if (this.stats)
+        {
+            this.stats.end();
+            this.stats.begin();
+        }
 
         if (this.swap === undefined) this.swap = false;
 

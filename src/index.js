@@ -1,4 +1,5 @@
 import { isTouch } from './utils';
+import Stats from 'stats-js';
 
 let sketches = [
     {
@@ -106,6 +107,19 @@ Promise.all([
         style.left = '0px';
         style.top = '0px';
         style.zIndex = '-1';
+
+        if (process.env.NODE_ENV !== 'production')
+        {
+            let stats = new Stats();
+            stats.setMode(1);
+            stats.domElement.style.position = 'absolute';
+            stats.domElement.style.right = '0px';
+            stats.domElement.style.bottom = '0px';
+
+            document.body.appendChild( stats.domElement );
+
+            curSketch.stats = stats;
+        }
     };
 
     navigate(0);
