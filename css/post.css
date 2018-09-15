@@ -20,7 +20,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #2D2D2D;
 }
 
-#dark h1, h2, h3, h4, h5, h6 {
+#dark h1, #dark h2, #dark h3, #dark h4, #dark h5, #dark h6 {
   color: #AAA;
 }
 
@@ -50,6 +50,14 @@ blockquote {
   padding: 0.5em 20px;
 }
 
+#dark blockquote {
+  border-left: 5px solid #777;
+}
+
+.fade blockquote {
+  transition: border-left 0.5s ease-out;
+}
+
 blockquote p {
   display: inline;
   font-style: italic;
@@ -64,7 +72,6 @@ blockquote p {
   border-color: #ddd;
   background-color: #eef;
   padding: 0 .2em;
-  transition: border-color 0.5s ease-out;
 }
 
 #dark .post code {
