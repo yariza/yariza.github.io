@@ -16,8 +16,7 @@
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 1.2rem;
-    font-family: monospace;
+    font-size: 1.0rem;
 }
 
 .sketch-left, .sketch-right {
