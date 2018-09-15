@@ -3,6 +3,10 @@ import Stats from 'stats-js';
 
 let sketches = [
     {
+        name: 'clouds',
+        sketch: () => import(/* webpackChunkName: 'clouds' */ './clouds'),
+    },
+    {
         name: 'waves',
         sketch: () => import(/* webpackChunkName: 'waves' */ './waves'),
     },

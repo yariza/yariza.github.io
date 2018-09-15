@@ -1,7 +1,7 @@
 precision mediump float;
 precision lowp int;
 
-#pragma glslify: snoise = require(./noise3D)
+#pragma glslify: snoise = require(../../include/noise3D)
 
 uniform highp mat4 viewMatrix;
 uniform highp vec3 cameraPosition;

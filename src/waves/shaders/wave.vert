@@ -1,7 +1,7 @@
 precision highp float;
 precision mediump int;
 
-#pragma glslify: snoise = require(./noise3D)
+#pragma glslify: snoise = require(../../include/noise3D)
 
 attribute vec3 position;
 
