@@ -5,7 +5,7 @@ const mat2 m2 = mat2(  0.80,  0.60,
 const mat2 m2i = mat2( 0.80, -0.60,
                        0.60,  0.80 );
 
-vec3 fbmd_9( in vec2 x )
+vec3 fbmd_9_2D( in vec2 x )
 {
     float f = 1.9;
     float s = 0.55;
@@ -14,7 +14,6 @@ vec3 fbmd_9( in vec2 x )
     vec2  d = vec2(0.0);
     mat2  m = mat2(1.0,0.0,0.0,1.0);
 
-    #pragma unroll_loop
     for( int i=0; i<9; i++ )
     {
         vec3 n = noised_2D(x);
@@ -27,4 +26,4 @@ vec3 fbmd_9( in vec2 x )
 	return vec3( a, d );
 }
 
-#pragma glslify: export(fbmd_9)
+#pragma glslify: export(fbmd_9_2D)

@@ -6,7 +6,7 @@ uniform vec2 _resolution;
 
 varying vec2 uv;
 
-#pragma glslify: fbm_9 = require(../../include/fbm/2D/fbm_9)
+// #pragma glslify: fbm_9_2D = require(../../include/fbm/2D/fbm_9_2D)
 
 mat3 setCamera( vec3 ro, vec3 ta, float cr )
 {
