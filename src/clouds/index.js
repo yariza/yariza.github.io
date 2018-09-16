@@ -54,11 +54,26 @@ export default class Clouds extends BaseSketch {
         this.program = program;
 
         if (!gl.getShaderParameter(vs, gl.COMPILE_STATUS))
-            console.log(gl.getShaderInfoLog(vs));
+        {
+            console.warn(
+                cloudsVert.split('\n').map((line, i) => {
+                    return ("    " + i).slice(-4) + ': ' + line;
+                }).join('\n')
+            )
+            // console.warn(cloudsVert);
+            console.error(gl.getShaderInfoLog(vs));
+        }
         if (!gl.getShaderParameter(fs, gl.COMPILE_STATUS))
-            console.log(gl.getShaderInfoLog(fs));
+        {
+            console.warn(
+                cloudsFrag.split('\n').map((line, i) => {
+                    return ("    " + i).slice(-4) + ': ' + line;
+                }).join('\n')
+            )
+            console.error(gl.getShaderInfoLog(fs));
+        }
         if (!gl.getProgramParameter(program, gl.LINK_STATUS))
-            console.log(gl.getProgramInfoLog(program));
+            console.error(gl.getProgramInfoLog(program));
 
         let vertices = new Float32Array([
             -1.0, 1.0, 1.0, 1.0, 1.0, -1.0, // Triangle 1
@@ -77,6 +92,9 @@ export default class Clouds extends BaseSketch {
         program.uTime = gl.getUniformLocation(program, "_time");
         gl.uniform1f(program.uTime, 0);
 
+        program.uResolution = gl.getUniformLocation(program, "_resolution");
+        gl.uniform2fv(program.uResolution, [this.ctx.width, this.ctx.height]);
+
         program.aVertexPosition = gl.getAttribLocation(program, "position");
         gl.enableVertexAttribArray(program.aVertexPosition);
         gl.vertexAttribPointer(program.aVertexPosition, 2, gl.FLOAT, false, 0, 0);
@@ -85,7 +103,8 @@ export default class Clouds extends BaseSketch {
     }
 
     resize = () => {
-
+        let gl = this.ctx.context;
+        gl.viewport(0, 0, this.ctx.width, this.ctx.height);
     }
 
     mousemove = () => {
@@ -107,6 +126,7 @@ export default class Clouds extends BaseSketch {
         let gl = this.ctx.context;
 
         gl.uniform1f(this.program.uTime, this.time);
+        gl.uniform2fv(this.program.uResolution, [this.ctx.width, this.ctx.height]);
         gl.drawArrays(gl.TRIANGLES, 0, 2 * 3);
     }
 }
