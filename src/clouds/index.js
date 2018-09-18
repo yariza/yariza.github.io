@@ -60,7 +60,6 @@ export default class Clouds extends BaseSketch {
                     return ("    " + i).slice(-4) + ': ' + line;
                 }).join('\n')
             )
-            // console.warn(cloudsVert);
             console.error(gl.getShaderInfoLog(vs));
         }
         if (!gl.getShaderParameter(fs, gl.COMPILE_STATUS))
