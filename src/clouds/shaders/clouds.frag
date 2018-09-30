@@ -28,31 +28,62 @@ float rayPlaneIntersection( vec3 ro, vec3 rd, vec3 po, vec3 pn)
     return t;
 }
 
+float fbm_2(vec3 pos)
+{
+    float value = 0.0;
+    float intensity = 0.5;
+    for (int i = 0; i < 2; i++)
+    {
+        value += noise_3D(pos) * intensity;
+        intensity *= 0.5;
+        pos *= 2.0;
+    }
+    return value;
+}
+
 float map(vec3 pos)
 {
-    float density = clamp(noise_3D(pos * 0.007 + vec3(0.5, 0.2, 0.5) * _time), 0.0, 1.0);
+    float density = clamp(fbm_2(pos * 0.007 + vec3(0.3, 0.0, 2.0) * _time), 0.0, 1.0);
     density -= smoothstep(-200.0, 10.0, pos.y);
     density *= smoothstep(-700.0, -500.0, pos.y);
     density -= 0.1;
     return clamp(density, 0.0, 1.0);
 }
 
-float raymarch(vec3 cameraPos, vec3 rayDir, float stepSize, out int steps, out vec3 endPos)
+float shadow(vec3 pos)
 {
-    float alpha = 0.0;
+    float s = 0.0;
+    vec3 lightDir = normalize(vec3(0.0, 3.0, 0.0));
+    s += map(pos + 1.0 * lightDir);
+    s += map(pos + 10.3 * lightDir);
+    s += map(pos + 20.3 * lightDir);
+    s += map(pos + 30.4 * lightDir);
+    s += map(pos + 40.8 * lightDir);
+    s *= 0.2;
+    return s;
+}
+
+vec4 raymarch(vec3 cameraPos, vec3 rayDir, float stepSize, out int steps, out vec3 endPos)
+{
+    vec4 sum = vec4(0.0, 0.0, 0.0, 1.0);
     vec3 pos = cameraPos;
     float weight = stepSize;
     steps = 0;
     for (int i = 0; i < 128; i++)
     {
-        alpha += map(pos) * weight;
-        if (alpha > 1.0) break;
+        float s = shadow(pos);
+        vec3 color = mix(vec3(0.8, 0.8, 0.8), vec3(0.1, 0.1, 0.02), s);
+        // vec3 color = vec3(0.5, 0.2, 0.2);
+        float alpha = map(pos);
+        sum.rgb += sum.a * alpha * color;
+        sum.a *= (1.0 - alpha);
+        if (sum.a < 0.01) break;
         pos += rayDir * stepSize;
-        stepSize *= 1.015;
+        stepSize *= 1.013;
         steps++;
     }
     endPos = pos;
-    return clamp(alpha, 0.0, 1.0);
+    return clamp(sum, 0.0, 1.0);
 }
 
 void main()
@@ -79,17 +110,18 @@ void main()
         startPos += rayDir * t;
         int steps;
         vec3 endPos;
-        float alpha = raymarch(startPos, rayDir, 10.0, steps, endPos);
-        float dist = length(endPos - cameraPos);
-        gl_FragColor = mix(
-            vec4(0.3, 0.3, 0.5, 1.0),
-            mix(
-                vec4(0.8, 0.8, 0.8, 1.0),
-                vec4(0.7, 0.5, 0.5, 1.0),
-                clamp(pow(dist / 4000.0, 0.6), 0.0, 1.0)
-            ),
-            alpha
-        );
+        vec4 color = raymarch(startPos, rayDir, 10.0, steps, endPos);
+        gl_FragColor = vec4(vec3(0.3, 0.3, 0.5) * color.a + color.rgb, 1.0);
+        // float dist = length(endPos - cameraPos);
+        // gl_FragColor = mix(
+        //     vec4(0.3, 0.3, 0.5, 1.0),
+        //     mix(
+        //         vec4(0.8, 0.8, 0.8, 1.0),
+        //         vec4(0.7, 0.5, 0.5, 1.0),
+        //         clamp(pow(dist / 4000.0, 0.6), 0.0, 1.0)
+        //     ),
+        //     alpha
+        // );
         // gl_FragColor = mix(vec4(0.0, 0.8, 0.8, 1.0), vec4(1.0, 0.0, 0.0, 1.0), float(steps) / 128.0);
         // gl_FragColor = mix(vec4(0.3, 0.3, 0.5, 1.0), vec4(0.8, 0.8, 0.8, 1.0), alpha);
         return;

@@ -111,7 +111,8 @@ export default class Clouds extends BaseSketch {
     }
 
     update = () => {
-        let dt = this.ctx.dt / 1000;
+        // let dt = this.ctx.dt / 1000;
+        let dt = 1.0 / 30;
         
         this.time += dt;
     }
@@ -127,5 +128,7 @@ export default class Clouds extends BaseSketch {
         gl.uniform1f(this.program.uTime, this.time);
         gl.uniform2fv(this.program.uResolution, [this.ctx.width, this.ctx.height]);
         gl.drawArrays(gl.TRIANGLES, 0, 2 * 3);
+
+        super.draw();
     }
 }
