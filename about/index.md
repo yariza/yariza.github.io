@@ -18,7 +18,7 @@ extra-css: [/css/about.css]
 			and Violin Performance.
 			</p>
 			<p>
-			I am currently searching for a co-op role as a creative technologist for Spring 2019.
+			I am currently searching for a co-op role for Spring 2019, and any full-time roles in June 2019 as a creative technologist.
 			</p>
 			<p>
 				<a href='/downloads/yujin_resume_technical.pdf'>Download Resume in PDF format</a>
