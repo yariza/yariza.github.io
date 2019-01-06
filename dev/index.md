@@ -10,7 +10,7 @@ extra-css: [/css/dev.css]
 
 <video autoplay loop controls src="/downloads/pupil_demo.mp4" width="800"></video>
 
-_Pupil_ is an ongoing ETC project about imagining AR experiences for classrooms in the future. You can check out our progress on our [project homepage](https://www.etc.cmu.edu/projects/pupil/), or on my [twitter feed](https://twitter.com/YujinAriza/status/1046570735672709120).
+_Pupil_ was a semester-long project at the Entertainment Technology Center, about imagining AR experiences for classrooms in the future. You can check out our work on our [project homepage](https://www.etc.cmu.edu/projects/pupil/).
 
 ## _Metaballs_
 
