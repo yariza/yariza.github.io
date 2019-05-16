@@ -1,7 +1,7 @@
-name: yariza
 markdown: kramdown
 highlighter: rouge
-permalink: /blog/:year/:month/:day/:title
+baseurl: ""
+permalink: /blog/:year/:month/:day/:title/
 exclude:
   - CNAME
   - '*.sublime-project'
