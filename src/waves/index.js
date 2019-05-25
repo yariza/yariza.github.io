@@ -173,7 +173,7 @@ export default class Waves extends BaseSketch {
             noiseAmp: { value: 0.5 },
             noiseFreq: { value: 0.3 },
             noiseEvo: { value: 0.04 },
-            hqFade: { value: 0.0 },
+            hqFade: { value: 1.0 },
             fade: { value: 0.0 },
             bgColor: { value: this.lightBG.concat(this.curDark) },
         };
@@ -189,10 +189,13 @@ export default class Waves extends BaseSketch {
             vertexShader: waveVert,
             fragmentShader: waveFrag,
         });
-        this.lowQMode = true;
+        // this.lowQMode = true;
+        this.lowQMode = false;
+        this.hqFade = 1.0;
 
         let waveMesh = this.waveMesh = new THREE.Mesh(waveGeo, this.lowQMode ? lowQMat : highQMat);
-        waveMesh.material = lowQMat;
+        // waveMesh.material = lowQMat;
+        waveMesh.material = highQMat;
         waveMesh.rotation.x = -HALF_PI;
         this.scene.add(this.waveMesh);
     };
@@ -234,9 +237,9 @@ export default class Waves extends BaseSketch {
         }
         this.azimuth = lerp(this.azimuth, this.targetAzimuth, 1 * dt);
         this.elevation = lerp(this.elevation, this.targetElevation, 1 * dt);
-        if (!this.lowQMode) {
-            this.hqFade = min(1.0, this.hqFade + 0.2 * dt);
-        }
+        // if (!this.lowQMode) {
+        //     this.hqFade = min(1.0, this.hqFade + 0.2 * dt);
+        // }
         this.fade = min(1.0, this.fade + 0.3 * dt)
 
         this.curDark += (this.dark === 1 ? 1 : -1) * this.ctx.dt / 0.5 / 1000;
@@ -253,16 +256,19 @@ export default class Waves extends BaseSketch {
         let now = performance.now();
         let dt = now - (this.now || now);
         this.now = now;
-        this.dt = lerp((this.dt || 1000), dt, 0.1);
+        this.dt = lerp((this.dt || 1), dt, 0.1);
 
-        let upperThreshold = 100;
-        let threshold = 17;
-        if (this.lowQMode) {
-            if (this.dt < threshold) {
-                console.log('switching to high q');
-                this.waveMesh.material = this.highQMat;
-                this.lowQMode = false;
-                this.hqFade = 0.0;
+        let upperThreshold = 40;
+        console.log(this.dt);
+        // let threshold = 17;
+        if (!this.lowQMode) {
+            if (this.dt > upperThreshold) {
+                console.log('switching to low q');
+                // this.waveMesh.material = this.highQMat;
+                this.waveMesh.material = this.lowQMat;
+                // this.lowQMode = false;
+                this.lowQMode = true;
+                // this.hqFade = 0.0;
             }
         }
 
