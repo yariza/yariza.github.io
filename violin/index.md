@@ -6,10 +6,8 @@ extra-css: [/css/violin.css]
 
 ![](/img/yujin-profile.jpg)
 
-Yujin Ariza, a graduate student at and the Juilliard School, and the
-former Concertmaster of the San Francisco Symphony Youth Orchestra, made his
-Carnegie Hall debut in May 2008. A winner of the National Young Arts Foundation
-2013, Yujin made his concerto debut with the El Camino Youth Symphony as a
+Yujin Ariza, violinist, made his Carnegie Hall debut in May 2008. A winner of
+the National Young Arts Foundation 2013, Yujin made his concerto debut with the El Camino Youth Symphony as a
 winner of its Concerto Competition with a full house audience at Flint Center,
 Cupertino, CA in 2008. He appeared again as a soloist with the Symphony to
 perform Ravel’s Tzigane in 2010. Recently, Yujin appeared with the Winchester
@@ -52,9 +50,7 @@ Yujin had performed in many different venues in US, Canada, Poland, Austria,
 Italy, Japan and Germany, including in the legendary Berliner Philharmoniker
 Concert Hall.
 
-Yujin currently studies violin with Mr. Li Lin at the Juilliard School. His
-distinguished teachers include Professor Naoko Tanaka at the Juilliard School.
+Yujin studied violin with Mr. Li Lin at the Juilliard School. His teachers
+include Professor Naoko Tanaka at the Juilliard School.
 He also studied Computer Science at Columbia University as a Columbia /
 Juilliard Exchange Program Student.
-
-[Download Resume in PDF format](/downloads/yujin_resume_violin.pdf)
