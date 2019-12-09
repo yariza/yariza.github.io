@@ -12,8 +12,7 @@ extra-css: [/css/about.css]
 			Hi! I am a developer interested in the intersection of Computer Graphics, Human Computer Interaction, and procedural sound and music. I am passionate about creative extensions of technology used in art form.
 			</p>
 			<p>
-			I am currently a student at the Entertainment Technology
-			Center at Carnegie Mellon University. I also graduated from Columbia
+			I am a graduate of the Entertainment Technology Center at Carnegie Mellon University. I also graduated from Columbia
 			University and the Juilliard School, where I studied Computer Science
 			and Violin Performance.
 			</p>
